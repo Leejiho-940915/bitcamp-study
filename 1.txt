@@ -1,0 +1,38 @@
+Web Application 구성요소
+ Java App- 출력할 데이터를 가공
+	- 입력한    "        저장/조회/변경/삭제				
+	- 사용자 인증(Authenticaion):로그인
+	- 사용자 권한(Authorization):관리자,일반,손님
+
+
+HTML	- 화면구성<Java App 에서 준비한 데이터를가지고
+
+CSS	- 화면의 모양을 제어(색상,크기,위치 등)
+
+Java Script -화면의 동작 제어 
+
+
+
+깃허브
+cd 주소(들어가기)
+cd ..  (방에서나가기)
+cd git(git방 들어가기)
+dir(디렉터리 확인하기)
+git clone {주소} (주소의공간으로이동)
+git add . (백업할파일의 명단작성)
+git config하기(최초 1번만)
+git commit -m "백업에대한설명"  (명단에등록된파일을 백업하기)
+git push
+:user name=Leejiho-940915
+:password = 메일로보낸 토큰 복사
+
+내파일올리고 수정해서 올렸을때			
+1번 add 
+2번 commit
+3번 git push
+다른방의 파일가져오기
+그방으로 이동후 git pull
+
+
+
+
