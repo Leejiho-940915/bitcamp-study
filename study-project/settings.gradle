@@ -1,0 +1,7 @@
+// 루트 프로젝트의 이름 설정
+// => 배포 파일을 만들 때 이 이름을 사용한다.
+rootProject.name = 'study-project'
+
+// 서브 프로젝트의 폴더 등록
+// => 빌드 작업을 수행할 때 서브 프로젝트 폴더에 있는 bulid.gradle 파일을 참조한다.
+include('app')
