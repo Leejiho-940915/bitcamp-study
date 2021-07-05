@@ -2,7 +2,9 @@
 plugins {
   //  id 'java' // 자바 애플리케이션 빌드 관련 작업들을 추가한다.
   id 'application' // 'java' 플러그인 +애플리케이션 관련작업
-  id 'eclipse' //이클립스 IDE 관련 작업
+  id 'eclipse'
+  id 'java'
+   //이클립스 IDE 관련 작업
   // eclipseProject : .project 파일 생성
   // eclipseClasspath : .classpath 파일 생성
   // eclipse : =eclipseProject + eclipseClasspath 
