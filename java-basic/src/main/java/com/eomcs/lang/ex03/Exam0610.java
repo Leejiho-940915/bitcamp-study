@@ -11,6 +11,7 @@ public class Exam0610 {
   public static void main(String[] args) {
     // 문자열 리터럴 기본 예
     System.out.println("ABC가나다");
+    System.out.println("Welcome to hell!\n");
 
     // 문자열에 유니코드를 포함할 수 있다.
     System.out.println("\u0041BC\uac00나다");
