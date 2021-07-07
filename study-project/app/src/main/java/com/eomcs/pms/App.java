@@ -4,13 +4,13 @@ public class App {
   public static void main(String[] args) {
 
     java.util.Scanner keyboardScanner = new java.util.Scanner(System.in);
-
+    System.out.println ("[회원]");
     System.out.print("번호? ");
     int number = keyboardScanner.nextInt();
     keyboardScanner.nextLine();
 
     System.out.print("이름? ");
-    String name = keyboardScanner.next();
+    String name = keyboardScanner.nextLine();
 
     System.out.print("이메일? ");
     String email = keyboardScanner.nextLine();
