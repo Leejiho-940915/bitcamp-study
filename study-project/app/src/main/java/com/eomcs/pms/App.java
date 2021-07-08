@@ -1,47 +1,73 @@
 package com.eomcs.pms;
 
+import java.util.Date;
+import java.util.Scanner;
+
+//1) 배열 사용 전
+//2) 배열 사용 후
+//3) 반복문 적용 : while 문
+//4) 반복문 적용 : for 문
+//5) 여러 문장에서 반복해서 사용하는 값은 변수에 담아서 사용한다.
+//6) 조회용으로만 사용할 변수라면 상수로 선언한다.
+//7) 특정 조건에 따라 반복을 멈춘다.
+//8) 날짜의 출력형식을 "yyyy-MM-dd"로 변경한다.
 public class App {
+
   public static void main(String[] args) {
+    Scanner keyboardScan = new Scanner(System.in);
+    System.out.println("[회원]");
 
-    java.util.Scanner keyboardScanner = new java.util.Scanner(System.in);
-    System.out.println ("[회원]");
-    System.out.print("번호? ");
-    int number = keyboardScanner.nextInt();
-    keyboardScanner.nextLine();
+    final int MAX_LANGTH = 100;
 
-    System.out.print("이름? ");
-    String name = keyboardScanner.nextLine();
+    int[] no = new int[MAX_LANGTH];
+    String[] name = new String[MAX_LANGTH];
+    String[] email = new String[MAX_LANGTH];
+    String[] password = new String[MAX_LANGTH];
+    String[] photo = new String[MAX_LANGTH];
+    String[] tel = new String[MAX_LANGTH];
+    Date[] registeredDate = new Date[MAX_LANGTH];
 
-    System.out.print("이메일? ");
-    String email = keyboardScanner.nextLine();
+    int size = 0;
 
-    System.out.print("암호? ");
-    int password = keyboardScanner.nextInt();
-    keyboardScanner.nextLine();
+    for (int i = 0; i < MAX_LANGTH; i = i + 1) {
+      System.out.print("번호? ");
+      no[i] = Integer.parseInt(keyboardScan.nextLine());
+      System.out.print("이름? ");
+      name[i] = keyboardScan.nextLine();
+      System.out.print("이메일? ");
+      email[i] = keyboardScan.nextLine();
+      System.out.print("암호? ");
+      password[i] = keyboardScan.nextLine();
+      System.out.print("사진? ");
+      photo[i] = keyboardScan.nextLine();
+      System.out.print("전화? ");
+      tel[i] = keyboardScan.nextLine();
+      registeredDate[i] = new Date();
+      size = size + 1;
+      System.out.println();
 
-    System.out.print("사진? ");
-    String picture = keyboardScanner.next();
-    keyboardScanner.nextLine();
-
-    System.out.print("전화? ");
-    int tel = keyboardScanner.nextInt();
-    keyboardScanner.nextLine();
-
-
-    java.sql.Date registeredDate = new java.sql.Date(System.currentTimeMillis());
-
-    keyboardScanner.close();
-
-    System.out.println("-----------------------------------");
-    System.out.printf("번호: %d\n", number);
-    System.out.printf("이름: %s\n", name);
-    System.out.printf("이메일: %s\n", email);
-    System.out.printf("암호: %s\n", password);
-    System.out.printf("사진: %s\n", picture);
-    System.out.printf("전화: %s\n", tel);
-    System.out.printf("가입일: %s\n", registeredDate);
+      System.out.println("계속 입력하시겠습니까? (y/N) ");
+      String input = keyboardScan.nextLine();
+      if(input.equalsIgnoreCase("N") || input.equals("")) {
+        break;
+      }
+      System.out.println();
+    }
 
 
+    keyboardScan.close(); // 데이터 입출력이 끝났으면 도구를 닫는다.
+
+
+    System.out.println("--------------------------------");
+
+    for (int i = 0; i < size; i = i + 1) {
+
+      System.out.printf("%d, %s, %s, %s, %tY-%5$tm-%5$td\n",
+          no[i],
+          name[i],
+          email[i],
+          tel[i],
+          registeredDate[i]);
+    }
   }
 }
-
