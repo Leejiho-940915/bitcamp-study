@@ -6,7 +6,12 @@ public class Test1 {
     i[1] = 500;
     i[2] = 300;
 
-    System.out.println([0] [1]);
+    i = new int[] {10, 20, 30, 40, 50};
+    System.out.println(i[0]);
+    System.out.println(i[1]);
+    System.out.println(i[2]);
+    System.out.println(i[3]);
+    System.out.println(i[4]);
 
 
 
