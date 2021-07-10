@@ -68,3 +68,11 @@
 - 스캐너(Scanner) 사용법
 - next___() 사용법
 
+## 9일차(2021-07-08.목)
+
+- java.util.Date클래스
+- java.lang.Integer 클래스
+- 배열
+- 반목문 : while 과 for
+- 연산자 와 피연산자
+
