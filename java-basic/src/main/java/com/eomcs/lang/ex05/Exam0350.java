@@ -1,5 +1,5 @@
-package com.eomcs.lang.ex05;
-
+0package com.eomcs.lang.ex05;
+0.
 //# 비트 연산자(&, |, ^, ~)
 //
 public class Exam0350 {
@@ -12,7 +12,7 @@ public class Exam0350 {
     //System.out.println(a || b); // 컴파일 오류!
     //System.out.println(!a); // 컴파일 오류!
 
-    
+
     // 그러나 &, |, ^, ~는 사용할 수 있다.
     // => 각 비트 단위로 연산을 수행한다.
     // => 1은 true, 0은 false라고 간주하고 계산한다.
