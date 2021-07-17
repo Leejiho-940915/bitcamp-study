@@ -113,3 +113,12 @@
 
 - 실전 프로젝트(eomcs-java-project)
   - 03-b. 메서드 사용법 : 메서드 활용
+
+## 13일차(2021-07-14,수)
+
+- 자바 기초 문법(eomcs-java)
+  - com.eomcs.lang.ex07
+    - 메서드 활용
+    - call by value 와 call by reference
+    - JVM의 메모리 영역: Method Area, JVM Stack, Heap
+    - 클래스의 인스턴스 메모리
