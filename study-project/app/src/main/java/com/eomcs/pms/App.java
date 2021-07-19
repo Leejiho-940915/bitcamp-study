@@ -1,64 +1,41 @@
 package com.eomcs.pms;
-
-import com.eomcs.pms.handler.MemberHandler;
-import com.eomcs.pms.handler.ProjectHandler;
-import com.eomcs.pms.handler.TaskHandler;
-import com.eomcs.util.Prompt;
-
+import java.util.Scanner;
 public class App {
-
   public static void main(String[] args) {
+    System.out.println("[회원]");
 
-    while (true) {
-      String input = Prompt.inputString("명령> ");
+    Scanner keyboardScan = new Scanner(System.in);
 
-      if (input.equals("exit") || input.equals("quit")) {
-        System.out.println("안녕!");
-        break;
-      } else if (input.equals("/member/add")) {
-        // 메서드로 분리한 코드를 실행하기(메서드 호출)
-        // => 메서드명();
-        MemberHandler.add();
 
-      } else if (input.equals("/member/list")) {
-        MemberHandler.list();
+    System.out.print("번호? ");
+    String no = keyboardScan.nextLine();
 
-      }  else if (input.equals("/project/add")) {
-        ProjectHandler.add();
+    System.out.print("이름? ");
+    String name = keyboardScan.nextLine();
 
-      }  else if (input.equals("/project/list")) {
-        ProjectHandler.list();
+    System.out.print("이메일? ");
+    String email = keyboardScan.nextLine();
 
-      }  else if (input.equals("/task/add")) {
-        TaskHandler.add();
+    System.out.print("암호? ");
+    String password = keyboardScan.nextLine();
 
-      }  else if (input.equals("/task/list")) {
-        TaskHandler.list();
+    System.out.print("사진? ");
+    String photo = keyboardScan.nextLine();
 
-      } else {
-        System.out.println("실행할 수 없는 명령입니다.");
-      }
-      System.out.println();
-    }
+    System.out.print("전화? ");
+    String tel = keyboardScan.nextLine();
 
-    Prompt.close();
+
+    java.sql.Date now = new java.sql.Date(System.currentTimeMillis());
+    keyboardScan.close();
+
+    System.out.println("-------------------");
+    System.out.println("번호: " + no);
+    System.out.println("이름: " + name);
+    System.out.println("이메일: " + email);
+    System.out.println("암호: " + password);
+    System.out.println("사진: " + photo);
+    System.out.println("전화: " + tel);
+    System.out.println("가입일: " + now);
   }
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
