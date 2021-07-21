@@ -1,5 +1,6 @@
 package com.eomcs.pms.handler;
 
+import java.sql.Date;
 import com.eomcs.pms.domain.Task;
 import com.eomcs.util.Prompt;
 
@@ -84,6 +85,33 @@ public class TaskHandler {
       System.out.printf("상태: %s\n", task.status);
       System.out.printf("담당자: %s\n", task.owner);
     }
+  }
+  public void update() {
+    System.out.println("[작업 변경]");
+    int no = Prompt.inputInt("번호? ");
+    Task task = null;
+
+    for (int i = 0; i < this.size; i++) {
+      if (tasks[i].no == no) {
+        task = tasks[i];
+        break;
+      }
+    }
+    if (task == null) {
+      System.out.println("해당 작업이 없습니다.");
+      return;
+    }
+    String content = Prompt.inputString(String.format("내용(%s)? ", task.content));
+    Date deadline = Prompt.inputDate(Date.this("마감일(%s)? ", task.deadline));
+
+    String input = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
+    if (input.equalsIgnoreCase("n") || input.length() == 0) {
+      System.out.println("작업 변경을 취소하였습니다.");
+      return;
+    }
+    task.content = content;
+    task.deadline = deadline;
+    System.out.println("작업을 변경하였습니다.");
   }
 
 }

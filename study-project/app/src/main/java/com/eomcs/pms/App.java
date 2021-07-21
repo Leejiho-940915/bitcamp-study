@@ -58,6 +58,9 @@ public class App {
       }  else if (input.equals("/task/detail")) {
         taskHandler.detail();
 
+      }  else if (input.equals("/task/update")) {
+        taskHandler.update();
+
       }  else if (input.equals("/board/add")) {
         boardHandler.add();
 
