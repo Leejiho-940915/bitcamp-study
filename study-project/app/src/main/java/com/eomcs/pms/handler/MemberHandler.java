@@ -96,15 +96,43 @@ public class MemberHandler {
 
     String input = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
     if (input.equalsIgnoreCase("n") || input.length() == 0) {
-      System.out.println("게시글 변경을 취소하였습니다.");
+      System.out.println("회원 변경을 취소하였습니다.");
       return;
     }
     member.name = name;
     member.email = email;
     member.photo = photo;
     member.tel = tel;
-    System.out.println("게시글을 변경하였습니다.");
+    System.out.println("회원을 변경하였습니다.");
 
+  }
+  public void delete() {
+    System.out.println("[회원 삭제]");
+    int no = Prompt.inputInt("번호? ");
+
+    int memberIndex = -1;
+
+    for (int i = 0; i < this.size; i++) {
+      if (this.members[i].no == no) {
+        memberIndex = i;
+        break;
+      }
+    }
+    if (memberIndex == -1) {
+      System.out.println("해당 번호의 회원이 없습니다.");
+      return;
+    }
+    String input = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
+    if (input.equalsIgnoreCase("n") || input.length() == 0) {
+      System.out.println("회원 삭제를 취소하였습니다.");
+      return;
+    }
+    for (int i = memberIndex + 1; i < this.size; i++) {
+      this.members[i - 1] = this.members[i];
+    }
+    this.members[--this.size] = null;
+
+    System.out.println("회원을 삭제하였습니다.");
   }
 
 }

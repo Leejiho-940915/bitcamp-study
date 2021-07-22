@@ -71,20 +71,21 @@ public class TaskHandler {
     int no = Prompt.inputInt("번호? ");
 
     Task task = null;
+
     for (int i = 0; i < this.size; i++) {
       if(tasks[i].no == no) {
         task = tasks[i];
         break;
       }
-      if (task == null) {
-        System.out.println("해당 작업이 없습니다.");
-        return;
-      }
-      System.out.printf("내용: %s\n", task.content);
-      System.out.printf("마감일: %s\n", task.deadline);
-      System.out.printf("상태: %s\n", task.status);
-      System.out.printf("담당자: %s\n", task.owner);
     }
+    if (task == null) {
+      System.out.println("해당 작업이 없습니다.");
+      return;
+    }
+    System.out.printf("내용: %s\n", task.content);
+    System.out.printf("마감일: %s\n", task.deadline);
+    System.out.printf("상태: %s\n", task.status);
+    System.out.printf("담당자: %s\n", task.owner);
   }
   public void update() {
     System.out.println("[작업 변경]");
@@ -102,7 +103,7 @@ public class TaskHandler {
       return;
     }
     String content = Prompt.inputString(String.format("내용(%s)? ", task.content));
-    Date deadline = Prompt.inputDate(Date.this("마감일(%s)? ", task.deadline));
+    Date deadline = Prompt.inputDate(String.format("마감일(%s)? ", task.deadline));
 
     String input = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
     if (input.equalsIgnoreCase("n") || input.length() == 0) {
@@ -113,5 +114,49 @@ public class TaskHandler {
     task.deadline = deadline;
     System.out.println("작업을 변경하였습니다.");
   }
+  public void delete() {
+    System.out.println("[작업 삭제]");
+    int no = Prompt.inputInt("번호? ");
+
+    int taskIndex = -1;
+
+    for (int i = 0; i < this.size; i++) {
+      if (this.tasks[i].no == no) {
+        taskIndex = i;
+        break;
+      }
+    }
+    if (taskIndex == -1) {
+      System.out.println("해당 작업이 없습니다.");
+      return;
+    }
+    String input = Prompt.inputString("정말 삭제하시겠습니까?(y/N)");
+    if (input.equalsIgnoreCase("n") || input.length() == 0) {
+      System.out.println("작업 삭제를 취소하였습니다.");
+      return;
+    }
+    for (int i = taskIndex + 1; i <this.size; i++) {
+      this.tasks[i - 1] = this.tasks[i];
+    }
+    this.tasks[--this.size] = null;
+
+    System.out.println("작업을 삭제하였습니다.");
+  }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -37,6 +37,9 @@ public class App {
       } else if (input.equals("/member/update")) {
         memberHandler.update();
 
+      } else if (input.equals("/member/delete")) {
+        memberHandler.delete();
+
       }  else if (input.equals("/project/add")) {
         projectHandler.add(memberHandler);
 
@@ -48,6 +51,9 @@ public class App {
 
       }  else if (input.equals("/project/update")) {
         projectHandler.update();
+
+      }  else if (input.equals("/project/delete")) {
+        projectHandler.delete();
 
       }  else if (input.equals("/task/add")) {
         taskHandler.add(memberHandler);
@@ -61,6 +67,9 @@ public class App {
       }  else if (input.equals("/task/update")) {
         taskHandler.update();
 
+      }  else if (input.equals("/task/delete")) {
+        taskHandler.delete();
+
       }  else if (input.equals("/board/add")) {
         boardHandler.add();
 
@@ -72,6 +81,9 @@ public class App {
 
       }  else if (input.equals("/board/update")) {
         boardHandler.update();
+
+      }  else if (input.equals("/board/delete")) {
+        boardHandler.delete();
 
       } else {
         System.out.println("실행할 수 없는 명령입니다.");
