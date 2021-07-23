@@ -10,13 +10,9 @@ public class App {
 
   public static void main(String[] args) {
 
-
     BoardHandler boardHandler = new BoardHandler();
-
     MemberHandler memberHandler = new MemberHandler();
-
     ProjectHandler projectHandler = new ProjectHandler();
-
     TaskHandler taskHandler = new TaskHandler();
 
     while (true) {
@@ -50,7 +46,7 @@ public class App {
         projectHandler.detail();
 
       }  else if (input.equals("/project/update")) {
-        projectHandler.update();
+        projectHandler.update(memberHandler);
 
       }  else if (input.equals("/project/delete")) {
         projectHandler.delete();
@@ -65,7 +61,7 @@ public class App {
         taskHandler.detail();
 
       }  else if (input.equals("/task/update")) {
-        taskHandler.update();
+        taskHandler.update(memberHandler);
 
       }  else if (input.equals("/task/delete")) {
         taskHandler.delete();
