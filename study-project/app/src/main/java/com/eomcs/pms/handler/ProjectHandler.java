@@ -71,14 +71,7 @@ public class ProjectHandler {
     System.out.println("[프로젝트 상세보기]");
     int no = Prompt.inputInt("번호? ");
 
-    Project project = null;
-
-    for (int i = 0; i < this.size; i++) {
-      if (this.projects[i].no == no) {
-        project = this.projects[i];
-        break;
-      }
-    }
+    Project project = findByNo(no);
 
     if (project == null) {
       System.out.println("해당 번호의 프로젝트가 없습니다.");
@@ -97,14 +90,7 @@ public class ProjectHandler {
     System.out.println("[프로젝트 변경]");
     int no = Prompt.inputInt("번호? ");
 
-    Project project = null;
-
-    for (int i = 0; i < this.size; i++) {
-      if (this.projects[i].no == no) {
-        project = this.projects[i];
-        break;
-      }
-    }
+    Project project = findByNo(no);
 
     if (project == null) {
       System.out.println("해당 번호의 프로젝트가 없습니다.");
@@ -166,14 +152,7 @@ public class ProjectHandler {
     System.out.println("[프로젝트 삭제]");
     int no = Prompt.inputInt("번호? ");
 
-    int index = -1;
-
-    for (int i = 0; i < this.size; i++) {
-      if (this.projects[i].no == no) {
-        index = i;
-        break;
-      }
-    }
+    int index = indexOf(no);
 
     if (index == -1) {
       System.out.println("해당 번호의 프로젝트가 없습니다.");
@@ -194,5 +173,24 @@ public class ProjectHandler {
     System.out.println("프로젝트를 삭제하였습니다.");
   }
 
+  private Project findByNo(int no) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.projects[i].no == no) {
+        return this.projects[i];
+      }
+    }
+    return null;
+  }
+
+  private int indexOf(int no) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.projects[i].no == no) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  private 
 
 }
