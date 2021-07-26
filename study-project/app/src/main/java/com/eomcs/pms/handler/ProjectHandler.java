@@ -11,9 +11,21 @@ public class ProjectHandler {
   Project[] projects = new Project[MAX_LENGTH];
   int size = 0;
 
+  // 이제 의존 객체는 생성자를 통해 주입 받기 때문에 
+  // 외부에서 인스턴스 변수에 직접 접근할 이유가 없다.
+  // 따라서 전체 공개 모드에서 패키지 멤버에게만 공개하는 모드로 전환한다. 
   MemberHandler memberHandler;
 
+  // 생성자 선언
+  // - 인스턴스를 생성할 때 반드시 호출되어야 하는 메서드이다.
+  // - 생성자는 리턴 타입이 없다.
+  // - 메서드 이름이 클래스 이름과 같아야 한다.
+  // - 인스턴스를 사용하기 전에 반드시 값을 설정해야 하는 인스턴스 변수가 있다면,
+  //   생성자의 파라미터로 선언하라.
+  // 
   public ProjectHandler(MemberHandler memberHandler) {
+    // 생성자에 파라미터가 있으면 인스턴스를 생성할 때 반드시 그 값을 넘겨야 한다.
+    // 일종의 인스턴스 변수의 값을 설정하는 것을 강제하는 효과가 있다.
     this.memberHandler = memberHandler;
   }
 
@@ -160,6 +172,9 @@ public class ProjectHandler {
   private String promptOwner(String label) {
     while (true) {
       String owner = Prompt.inputString(label);
+      // 회원 이름이 등록된 회원의 이름인지 검사할 때 사용할 MemberHandler 인스턴스는
+      // 인스턴스 변수에 미리 주입되어 있기 때문에 파라미터로 받을 필요가 없다.
+      // 다음과 같이 인스턴스 변수를 직접 사용하면 된다.
       if (this.memberHandler.exist(owner)) {
         return owner;
       } else if (owner.length() == 0) {
