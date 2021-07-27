@@ -76,7 +76,7 @@ public class Exam0130 {
 // 5) 참조하는 외부 클래스나 인터페이스 검사(Resolve)
 //    - 다른 클래스나 인터페이스를 참조하는 것이 유효한지 검사한다.
 // 6) 클래스 초기화시키기
-//    - 변수 초기화 문장(variable initializers), 스태틱 블록(static initializers)을 실행한다.
+//    - 스태틱 블록(static initializers)을 실행한다.
 // 7) main() 메서드를 호출한다.
 //    - 클래스를 실행하는 것이라면 main() 메서드를 찾아 실행한다.
 
