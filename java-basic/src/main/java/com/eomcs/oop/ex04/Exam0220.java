@@ -24,9 +24,9 @@ public class Exam0220 {
 
     // 스태틱 메서드 = 클래스 메서드 사용
     int v2 = Integer.parseInt("1280");
-    String s1 = Integer.toBinaryString(77);
-    String s2 = Integer.toOctalString(77);
-    String s3 = Integer.toHexString(77);
+    String s1 = Integer.toBinaryString(77);//2진수
+    String s2 = Integer.toOctalString(77);//8진수
+    String s3 = Integer.toHexString(77);//16진수
     System.out.printf("77 = %s, %s, %s\n", s1, s2, s3);
 
     Integer x1 = Integer.valueOf("44"); // 문자열에 있는 수를 10진수로 간주한다.
