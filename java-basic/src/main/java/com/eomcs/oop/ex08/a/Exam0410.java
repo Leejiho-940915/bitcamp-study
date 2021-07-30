@@ -129,7 +129,7 @@ public class Exam0410 {
 //   - 인스턴스 멤버 : 인스턴스 필드, 인스턴스 블록, 인스턴스 메서드, 생성자
 //
 // 2) 상속(inheritance)
-//   - 기능 확장을 위함 문법
+//   - 기능 확장을 위한 문법
 //
 // 3) 캡슐화(encapsulation)
 //   - 외부의 접근을 제어하는 문법
@@ -163,7 +163,7 @@ public class Exam0410 {
 //   - getter만 있는 경우: read only 프로퍼티
 //   - setter만 있는 경우: write only 프로퍼티
 //   - getter/setter 모두 있는 경우: read/write 프로퍼티
-//
+
 
 
 
