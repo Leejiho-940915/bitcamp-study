@@ -44,6 +44,9 @@ class Customer4 {
   public void setHeight(int height) {
     this.height = height;
   }
+
+
+
 }
 
 public class Exam0140 {

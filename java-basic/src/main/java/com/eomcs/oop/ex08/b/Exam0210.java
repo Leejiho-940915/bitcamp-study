@@ -13,7 +13,7 @@ public class Exam0210 extends com.eomcs.oop.ex08.b.sub.C {
   public static void main(String[] args) {
     A obj1 = new A();
 
-    //obj1.privateVar = 100; // 접근 불가! 오직 그 클래스 안에서만 사용가능.
+    //    obj1.privateVar = 100; // 접근 불가! 오직 그 클래스 안에서만 사용가능.
     obj1.defaultVar = 100; // OK! 이 클래스는 A 클래스와 같은 패키지에 소속되어 있다.
     obj1.protectedVar = 100; // OK! 비록 이 클래스가 자식클래스는 아니지만
     // 같은 패키지에 소속되어 있다.
