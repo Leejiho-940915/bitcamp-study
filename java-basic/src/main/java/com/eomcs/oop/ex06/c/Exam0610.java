@@ -4,7 +4,7 @@ package com.eomcs.oop.ex06.c;
 public class Exam0610 {
 
   static class Car {}
-  static class Secdan extends Car {}
+  static class Sedan extends Car {}
   static class Tico extends Sedan {}
 
   static class CarFactory {
@@ -33,11 +33,7 @@ public class Exam0610 {
 
 
   public static void main(String[] args) {
-    new CarFactory().makeCar().run();
-    new SedanFactory().makeCar().run();
-    new TruckFactory().makeCar().run();
-    new DumpTruckFactory().makeCar().run();
-    new DumpTruckFactory2().makeCar().run();
+
   }
 }
 

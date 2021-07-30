@@ -9,33 +9,31 @@ package com.eomcs.oop.ex06.c;
 //
 
 public class Exam0421 {
+
   static class X {
-    void m1() {System.out.println("X의 m1()");} 
+    void m1() {System.out.println("X의 m1()");}
     void m2() {System.out.println("X의 m2()");}
   }
-
 
   static class X2 extends X {
     @Override void m1() {System.out.println("X2의 m1()");}
   }
 
-
   static class X3 extends X2 {
     @Override void m2() {System.out.println("X3의 m2()");}
   }
 
-
   static class X4 extends X3 {
     @Override void m1() {System.out.println("X4의 m1()");}
-
     void test() {
-      this.m1(); // X5의 m1() : this가 실제 가리키는 인스턴스 클래스부터 메서드를 찾아 올라 간다.
-      super.m1(); // X2의 m1() : test()가 소속된 클래스 기준으로 수퍼 클래스에서 메서드를 찾아 올라간다.
+      this.m1(); // X5의 m1() : this가 실제 가리키는 인스턴스 클래스를 기준으로 메서드를 찾아 올라 간다.
+      super.m1(); // X2의 m1() : test()가 소속된 클래스를 기준으로 수퍼 클래스부터 메서드를 찾아 올라간다.
 
       this.m2(); // X5의 m2()
       super.m2(); // X3의 m2()
     }
   }
+
   static class X5 extends X4 {
     @Override void m1() {System.out.println("X5의 m1()");}
     @Override void m2() {System.out.println("X5의 m2()");}
@@ -44,7 +42,6 @@ public class Exam0421 {
   public static void main(String[] args) {
     X5 obj = new X5();
     obj.test();
-
   }
 }
 
