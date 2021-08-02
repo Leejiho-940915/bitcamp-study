@@ -27,7 +27,7 @@ class Score4 {
   // - name, kor, eng, math, sum, aver 는 "필드(field)" 라 부른다.
   // - getXxx()/setXxx()는 "프로퍼티(property)"라 부른다.
   // - 필드를 프로퍼티라 부르는 것이 아니다!
-  //   게터/세터를 프로퍼티라 부는 것이다.
+  //   게터/세터를 프로퍼티라 부르는 것이다.
 
   // 점수를 변경할 때 계산을 다시 해야 하고, 유효하지 않은 값을 넣지 못하도록 막아야 한다.
   // 따라서 직접 접근하는 것을 막는다.
@@ -163,7 +163,7 @@ public class Exam0410 {
 //   - getter만 있는 경우: read only 프로퍼티
 //   - setter만 있는 경우: write only 프로퍼티
 //   - getter/setter 모두 있는 경우: read/write 프로퍼티
-
+//
 
 
 
