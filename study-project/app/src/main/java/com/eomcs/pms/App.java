@@ -6,32 +6,30 @@ import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.pms.menu.Menu;
 import com.eomcs.pms.menu.MenuGroup;
-import com.eomcs.pms.menu.ProjectDeleteMenu;
-import com.eomcs.pms.menu.TaskAddMenu;
-import com.eomcs.pms.menu.TaskDeleteMenu;
-import com.eomcs.pms.menu.TaskDetailMenu;
-import com.eomcs.pms.menu.TaskListMenu;
-import com.eomcs.pms.menu.TaskUpdateMenu;
 import com.eomcs.util.Prompt;
 // 
 public class App {
 
-  // main() 메서드와 doXxxMenu() 메서드가 공유하는 변수는 
-  // 같은 스태틱 멤버로 만든다.
-  static BoardHandler boardHandler = new BoardHandler();
-  static MemberHandler memberHandler = new MemberHandler();
-  static ProjectHandler projectHandler = new ProjectHandler(memberHandler);
-  static TaskHandler taskHandler = new TaskHandler(memberHandler);
+  BoardHandler boardHandler = new BoardHandler();
+  MemberHandler memberHandler = new MemberHandler();
+  ProjectHandler projectHandler = new ProjectHandler(memberHandler);
+  TaskHandler taskHandler = new TaskHandler(memberHandler);
 
   public static void main(String[] args) {
 
-    Menu mainMenu = createMenu();
-    mainMenu.execute();
-
-    Prompt.close();
+    App app = new App();
+    app.service();
 
   }
-  static Menu createMenu() {
+
+  void service() {
+    //    Menu mainMenu = createMenu();
+    //    mainMenu.execute();
+    createMenu().execute();
+    Prompt.close();
+  }
+
+  Menu createMenu() {
     MenuGroup mainMenuGroup = new MenuGroup("메인");
     mainMenuGroup.setPrevMenuTitle("종료");
 
@@ -103,17 +101,34 @@ public class App {
       public void execute() {
         projectHandler.update();
       }});
-    projectMenu.add(new ProjectDeleteMenu(projectHandler));
+    projectMenu.add(new Menu("삭제") {
+      public void execute() {
+        projectHandler.delete();
+      }});
 
     MenuGroup taskMenu = new MenuGroup("작업");
     mainMenuGroup.add(taskMenu);
 
-    taskMenu.add(new TaskAddMenu(taskHandler));
-    taskMenu.add(new TaskListMenu(taskHandler));
-    taskMenu.add(new TaskDetailMenu(taskHandler));
-    taskMenu.add(new TaskUpdateMenu(taskHandler));
-    taskMenu.add(new TaskDeleteMenu(taskHandler));
-
+    taskMenu.add(new Menu("등록") {
+      public void execute() {
+        taskHandler.add();
+      }});
+    taskMenu.add(new Menu("목록") {
+      public void execute() {
+        taskHandler.list();
+      }});
+    taskMenu.add(new Menu("상세보기") {
+      public void execute() {
+        taskHandler.detail();
+      }});
+    taskMenu.add(new Menu("변경") {
+      public void execute() {
+        taskHandler.update();
+      }});
+    taskMenu.add(new Menu("삭제") {
+      public void execute() {
+        taskHandler.delete();
+      }});
 
     return mainMenuGroup;
   }
