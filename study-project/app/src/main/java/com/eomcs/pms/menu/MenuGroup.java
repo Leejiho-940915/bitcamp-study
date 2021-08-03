@@ -7,8 +7,11 @@ import com.eomcs.util.Prompt;
 //
 public class MenuGroup extends Menu {
 
+
   Menu[] childs = new Menu[100];
   int size;
+  boolean disablePrevMenu;
+
 
   // 생성자를 정의하지 않으면 컴파일러가 기본 생성자를 자동으로 추가해 준다.
   // 문제는 컴파일러가 추가한 기본 생성자는 수퍼 클래스의 기본 생성자를 호출하기 때문에
@@ -17,6 +20,11 @@ public class MenuGroup extends Menu {
   // 따라서 개발자가 직접 생성자를 정의해야 한다.
   public MenuGroup(String title) {
     super(title);
+  }
+
+  public MenuGroup(String title, boolean disablePrevMenu) {
+    super(title);
+    this.disablePrevMenu = disablePrevMenu; 
   }
 
   // MenuGroup이 포함하는 하위 Menu를 다룰 수 있도록 메서드를 정의한다.
@@ -64,13 +72,17 @@ public class MenuGroup extends Menu {
   @Override // 컴파일러에게 오버라이딩을 제대로 하는지 조사해달라고 요구한다.
   public void execute() {
     while (true) {
-      System.out.printf("[%s]\n", this.title);
+      System.out.printf("\n[%s]\n", this.title);
       for (int i = 0; i <this.size; i++) {
         System.out.printf("%d.%s\n",i + 1, this.childs[i].title);
       }
-      System.out.println("0. 이전메뉴");
+
+      if (!disablePrevMenu) {
+        System.out.println("0. 이전메뉴");
+      }
+
       int menuNo = Prompt.inputInt("선택> ");
-      if (menuNo == 0) {
+      if (menuNo == 0 && !disablePrevMenu) {
         return;
       }
 
