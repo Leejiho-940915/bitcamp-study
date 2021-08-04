@@ -6,9 +6,17 @@ import com.eomcs.util.Prompt;
 
 public class ProjectHandler {
 
-  static final int MAX_LENGTH = 5;
+  static class Node {
+    Project project;
+    Node next;
 
-  Project[] projects = new Project[MAX_LENGTH];
+    public Node(Project project) {
+      this.project = project;
+    }
+  }
+
+  Node head;
+  Node tail;
   int size = 0;
   MemberHandler memberHandler;
 
@@ -35,28 +43,37 @@ public class ProjectHandler {
 
     project.members = promptMembers("팀원?(완료: 빈 문자열) ");
 
-    if (size == projects.length) {
-      Project[] arr = new Project[projects.length + (projects.length >> 1)];
-      for (int i = 0; i < size; i++) {
-        arr[i] = projects[i];
-      }
-      projects = arr;
+    Node node = new Node(project);
+
+    if (head == null) {
+      tail = head = node;
+    } else {
+      tail.next = node;
+
+      tail = node;
     }
-    this.projects[this.size++] = project;
+
+    size++;
   }
 
   //다른 패키지에 있는 App 클래스가 다음 메서드를 호출할 수 있도록 공개한다.
   public void list() {
     System.out.println("[프로젝트 목록]");
-    for (int i = 0; i < this.size; i++) {
-      System.out.printf("%d, %s, %s, %s, %s, [%s]\n",
-          this.projects[i].no, 
-          this.projects[i].title, 
-          this.projects[i].startDate, 
-          this.projects[i].endDate, 
-          this.projects[i].owner,
-          this.projects[i].members);
+    if (head == null) {
+      return;
     }
+    Node node = head;
+
+    do {
+      System.out.printf("%d, %s, %s, %s, %s, [%s]\n",
+          node.project.no, 
+          node.project.title, 
+          node.project.startDate, 
+          node.project.endDate, 
+          node.project.owner,
+          node.project.members);
+      node = node.next;
+    } while (node != null);
   }
 
   public void detail() {
@@ -124,9 +141,9 @@ public class ProjectHandler {
     System.out.println("[프로젝트 삭제]");
     int no = Prompt.inputInt("번호? ");
 
-    int index = indexOf(no);
+    Project project = findByNo(no);
 
-    if (index == -1) {
+    if (project == null) {
       System.out.println("해당 번호의 프로젝트가 없습니다.");
       return;
     }
@@ -137,31 +154,47 @@ public class ProjectHandler {
       return;
     }
 
-    for (int i = index + 1; i < this.size; i++) {
-      this.projects[i - 1] = this.projects[i];
+    Node node = head;
+    Node prev = null;
+
+    while (node != null) {
+      if (node.project == project) {
+        if (node == head) {
+          head = node.next;
+        } else {
+          prev.next = node.next;
+        }
+
+        node.next = null;
+
+        if (node == tail) {
+          tail = prev;
+        }
+        break;
+      }
+
+      prev = node;
+      node = node.next;
     }
-    this.projects[--this.size] = null;
+
+    size--;
 
     System.out.println("프로젝트를 삭제하였습니다.");
   }
 
   private Project findByNo(int no) {
-    for (int i = 0; i < this.size; i++) {
-      if (this.projects[i].no == no) {
-        return this.projects[i];
+    Node node = head;
+
+    while (node != null) {
+      if (node.project.no == no) {
+        return node.project;
       }
+      node = node.next;
     }
     return null;
   }
 
-  private int indexOf(int no) {
-    for (int i = 0; i < this.size; i++) {
-      if (this.projects[i].no == no) {
-        return i;
-      }
-    }
-    return -1;
-  }
+
 
   private String promptOwner(String label) {
     while (true) {
