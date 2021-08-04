@@ -7,7 +7,7 @@ import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.pms.menu.Menu;
 import com.eomcs.pms.menu.MenuGroup;
 import com.eomcs.util.Prompt;
-// 
+
 public class App {
 
   BoardHandler boardHandler = new BoardHandler();
@@ -16,15 +16,11 @@ public class App {
   TaskHandler taskHandler = new TaskHandler(memberHandler);
 
   public static void main(String[] args) {
-
     App app = new App();
     app.service();
-
   }
 
   void service() {
-    //    Menu mainMenu = createMenu();
-    //    mainMenu.execute();
     createMenu().execute();
     Prompt.close();
   }
@@ -36,104 +32,124 @@ public class App {
     MenuGroup boardMenu = new MenuGroup("게시판");
     mainMenuGroup.add(boardMenu);
 
-
     boardMenu.add(new Menu("등록") {
+      @Override
       public void execute() {
-        boardHandler.add();
+        boardHandler.add(); 
       }});
     boardMenu.add(new Menu("목록") {
+      @Override
       public void execute() {
-        boardHandler.list();
+        boardHandler.list(); 
       }});
     boardMenu.add(new Menu("상세보기") {
+      @Override
       public void execute() {
-        boardHandler.detail();
+        boardHandler.detail(); 
       }});
     boardMenu.add(new Menu("변경") {
+      @Override
       public void execute() {
-        boardHandler.update();
+        boardHandler.update(); 
       }});
     boardMenu.add(new Menu("삭제") {
+      @Override
       public void execute() {
-        boardHandler.delete();
+        boardHandler.delete(); 
       }});
 
     MenuGroup memberMenu = new MenuGroup("회원");
     mainMenuGroup.add(memberMenu);
 
     memberMenu.add(new Menu("등록") {
+      @Override
       public void execute() {
-        memberHandler.add();
+        memberHandler.add(); 
       }});
     memberMenu.add(new Menu("목록") {
+      @Override
       public void execute() {
-        memberHandler.list();
+        memberHandler.list(); 
       }});
     memberMenu.add(new Menu("상세보기") {
+      @Override
       public void execute() {
-        memberHandler.detail();
+        memberHandler.detail(); 
       }});
     memberMenu.add(new Menu("변경") {
+      @Override
       public void execute() {
-        memberHandler.update();
+        memberHandler.update(); 
       }});
     memberMenu.add(new Menu("삭제") {
+      @Override
       public void execute() {
-        memberHandler.delete();
+        memberHandler.delete(); 
       }});
 
     MenuGroup projectMenu = new MenuGroup("프로젝트");
     mainMenuGroup.add(projectMenu);
 
     projectMenu.add(new Menu("등록") {
+      @Override
       public void execute() {
-        projectHandler.add();
+        projectHandler.add(); 
       }});
     projectMenu.add(new Menu("목록") {
+      @Override
       public void execute() {
-        projectHandler.list();
+        projectHandler.list(); 
       }});
     projectMenu.add(new Menu("상세보기") {
+      @Override
       public void execute() {
-        projectHandler.detail();
+        projectHandler.detail(); 
       }});
     projectMenu.add(new Menu("변경") {
+      @Override
       public void execute() {
-        projectHandler.update();
+        projectHandler.update(); 
       }});
     projectMenu.add(new Menu("삭제") {
+      @Override
       public void execute() {
-        projectHandler.delete();
+        projectHandler.delete(); 
       }});
 
     MenuGroup taskMenu = new MenuGroup("작업");
     mainMenuGroup.add(taskMenu);
 
     taskMenu.add(new Menu("등록") {
+      @Override
       public void execute() {
-        taskHandler.add();
+        taskHandler.add(); 
       }});
     taskMenu.add(new Menu("목록") {
+      @Override
       public void execute() {
-        taskHandler.list();
+        taskHandler.list(); 
       }});
     taskMenu.add(new Menu("상세보기") {
+      @Override
       public void execute() {
-        taskHandler.detail();
+        taskHandler.detail(); 
       }});
     taskMenu.add(new Menu("변경") {
+      @Override
       public void execute() {
-        taskHandler.update();
+        taskHandler.update(); 
       }});
     taskMenu.add(new Menu("삭제") {
+      @Override
       public void execute() {
-        taskHandler.delete();
+        taskHandler.delete(); 
       }});
 
     return mainMenuGroup;
   }
-
 }
+
+
 
 
 
