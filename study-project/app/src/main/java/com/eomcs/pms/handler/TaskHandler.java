@@ -18,6 +18,7 @@ public class TaskHandler {
   Node head;
   Node tail;
   int size = 0;
+
   MemberHandler memberHandler;
 
   public TaskHandler(MemberHandler memberHandler) {
@@ -41,7 +42,6 @@ public class TaskHandler {
     }
 
     Node node = new Node(task);
-
     if (head == null) {
       tail = head = node;
     } else {
@@ -53,11 +53,11 @@ public class TaskHandler {
 
   public void list() {
     System.out.println("[작업 목록]");
+
     if (head == null) {
       return;
     }
     Node node = head;
-
     do {
       System.out.printf("%d, %s, %s, %s, %s\n",
           node.task.no, 
@@ -145,18 +145,17 @@ public class TaskHandler {
         if (node == head) {
           head = node.next;
         } else {
-          prev.next = node.next;
+          prev.next = node.next; // 이전 노드를 다음 노드와 연결한다.
         }
-        node.next = null;
-
-        if (node == tail) {
-          tail = prev;
+        node.next = null; // 다음 노드와의 연결을 끊는다.
+        if (node == tail) { // 삭제할 현재 노드가 마지막 노드라면
+          tail = prev; // 이전 노드를 마지막 노드로 설정한다.
         }
         break;
       }
-
-      prev = node;
-      node = node.next;
+      // 현재 노드가 아니라면,
+      prev = node; // 현재 노드의 주소를 prev 변수에 저장하고,
+      node = node.next; // node 변수에는 다음 노드의 주소를 저장한다.
     }
     size--;
 
@@ -172,10 +171,9 @@ public class TaskHandler {
       }
       node = node.next;
     }
+
     return null;
   }
-
-
 
   private String getStatusLabel(int status) {
     switch (status) {

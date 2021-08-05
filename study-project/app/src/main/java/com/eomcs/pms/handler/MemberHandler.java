@@ -136,18 +136,18 @@ public class MemberHandler {
         if (node == head) {
           head = node.next;
         } else {
-          prev.next = node.next;
+          prev.next = node.next; // 이전 노드를 다음 노드와 연결한다.
         }
-        node.next = null;
-        if (node == tail) {
-          tail = prev;
+        node.next = null; // 다음 노드와의 연결을 끊는다.
+        if (node == tail) { // 삭제할 현재 노드가 마지막 노드라면
+          tail = prev; // 이전 노드를 마지막 노드로 설정한다.
         }
         break;
       }
-      prev = node;
-      node = node.next;
+      // 현재 노드가 아니라면,
+      prev = node; // 현재 노드의 주소를 prev 변수에 저장하고,
+      node = node.next; // node 변수에는 다음 노드의 주소를 저장한다.
     }
-
     size--;
 
     System.out.println("회원을 삭제하였습니다.");
@@ -155,8 +155,7 @@ public class MemberHandler {
 
   boolean exist(String name) {
     Node node = head;
-
-    while(node != null) {
+    while (node != null) {
       if (node.member.name.equals(name)) {
         return true;
       }
@@ -165,18 +164,19 @@ public class MemberHandler {
     return false;
   }
 
-
   private Member findByNo(int no) {
     Node node = head;
 
-    while(node != null) {
+    while (node != null) {
       if (node.member.no == no) {
         return node.member;
       }
       node = node.next;
     }
+
     return null;
   }
+
 
 }
 

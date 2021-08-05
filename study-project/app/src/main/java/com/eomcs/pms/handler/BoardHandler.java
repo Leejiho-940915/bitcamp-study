@@ -19,7 +19,6 @@ public class BoardHandler {
   Node tail;
   int size = 0;
 
-
   public void add() {
     System.out.println("[새 게시글]");
 
@@ -31,7 +30,7 @@ public class BoardHandler {
     board.writer = Prompt.inputString("작성자? ");
     board.registeredDate = new Date(System.currentTimeMillis());
 
-    // 새 노드를 만든다. 생성자를 호출할 때, 노드에 담을 Board 객체 주소를 넘긴다.
+    // 새 노드를 만든다. 생성자를 호출할 때, 노드에 담을 Board 객체 주소를 넘긴다. 
     Node node = new Node(board);
 
     if (head == null) {
@@ -40,7 +39,7 @@ public class BoardHandler {
       // 기존에 tail이 가리키는 마지막 노드의 next 변수에 새 노드 주소를 저장한다.
       tail.next = node;
 
-      // 새로 만든 노드를 마지막 노드로 설정한다.
+      // 새로 만든 노드를 마지막 노드로 설정한다. 
       tail = node;
     }
 
@@ -127,7 +126,6 @@ public class BoardHandler {
       return;
     }
 
-
     Node node = head;
     Node prev = null;
 
@@ -139,11 +137,12 @@ public class BoardHandler {
           prev.next = node.next; // 이전 노드를 다음 노드와 연결한다.
         }
 
-        node.next = null; // 다음 노드와 연결을 끊는다.
+        node.next = null; // 다음 노드와의 연결을 끊는다.
 
-        if (node == tail) { // 삭제할 현재 노드가 마지막 노드라면,
-          tail = prev; // 이전 노드를 마지막 노드로 설장한다.
+        if (node == tail) { // 삭제할 현재 노드가 마지막 노드라면
+          tail = prev; // 이전 노드를 마지막 노드로 설정한다.
         }
+
         break;
       }
 
@@ -166,9 +165,9 @@ public class BoardHandler {
       }
       node = node.next;
     }
+
     return null;
   }
-
 }
 
 

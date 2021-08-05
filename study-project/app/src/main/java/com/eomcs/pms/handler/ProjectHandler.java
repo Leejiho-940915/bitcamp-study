@@ -18,6 +18,7 @@ public class ProjectHandler {
   Node head;
   Node tail;
   int size = 0;
+
   MemberHandler memberHandler;
 
   public ProjectHandler(MemberHandler memberHandler) {
@@ -44,15 +45,12 @@ public class ProjectHandler {
     project.members = promptMembers("팀원?(완료: 빈 문자열) ");
 
     Node node = new Node(project);
-
     if (head == null) {
       tail = head = node;
     } else {
       tail.next = node;
-
       tail = node;
     }
-
     size++;
   }
 
@@ -63,7 +61,6 @@ public class ProjectHandler {
       return;
     }
     Node node = head;
-
     do {
       System.out.printf("%d, %s, %s, %s, %s, [%s]\n",
           node.project.no, 
@@ -162,22 +159,20 @@ public class ProjectHandler {
         if (node == head) {
           head = node.next;
         } else {
-          prev.next = node.next;
+          prev.next = node.next; // 이전 노드를 다음 노드와 연결한다.
         }
-
-        node.next = null;
-
-        if (node == tail) {
-          tail = prev;
+        node.next = null; // 다음 노드와의 연결을 끊는다.
+        if (node == tail) { // 삭제할 현재 노드가 마지막 노드라면
+          tail = prev; // 이전 노드를 마지막 노드로 설정한다.
         }
         break;
       }
-
-      prev = node;
-      node = node.next;
+      // 현재 노드가 아니라면,
+      prev = node; // 현재 노드의 주소를 prev 변수에 저장하고,
+      node = node.next; // node 변수에는 다음 노드의 주소를 저장한다.
     }
-
     size--;
+
 
     System.out.println("프로젝트를 삭제하였습니다.");
   }
@@ -191,10 +186,9 @@ public class ProjectHandler {
       }
       node = node.next;
     }
+
     return null;
   }
-
-
 
   private String promptOwner(String label) {
     while (true) {
