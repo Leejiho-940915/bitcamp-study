@@ -6,12 +6,7 @@ import com.eomcs.util.Prompt;
 
 public class BoardHandler {
 
-  BoardList boardList;
-
-  public BoardHandler(BoardList boardList) {
-    this.boardList = boardList;
-  }
-
+  BoardList2 boardList = new BoardList2();
 
   public void add() {
     System.out.println("[새 게시글]");
@@ -30,9 +25,10 @@ public class BoardHandler {
   public void list() {
     System.out.println("[게시글 목록]");
 
-    Board[] list = boardList.toArray();
+    Object[] list = boardList.toArray();
 
-    for (Board board : list) {
+    for (Object obj : list) {
+      Board board = (Board) obj;
       System.out.printf("%d, %s, %s, %s, %d, %d\n", 
           board.no, 
           board.title, 
@@ -107,8 +103,9 @@ public class BoardHandler {
 
     System.out.println("게시글을 삭제하였습니다.");
   }
-
 }
+
+
 
 
 

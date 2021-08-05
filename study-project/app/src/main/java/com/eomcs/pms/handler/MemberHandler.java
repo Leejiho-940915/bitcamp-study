@@ -6,12 +6,11 @@ import com.eomcs.util.Prompt;
 
 public class MemberHandler {
 
-  MemberList memberList;
+  MemberList2 memberList = new MemberList2();
 
-  public MemberHandler(MemberList memberList) {
-    this.memberList = memberList;
+  public MemberList2 getMemberList() {
+    return memberList;
   }
-
 
   public void add() {
     System.out.println("[회원 등록]");
@@ -27,15 +26,15 @@ public class MemberHandler {
     member.registeredDate = new Date(System.currentTimeMillis());
 
     memberList.add(member);
-
   }
 
   public void list() {
     System.out.println("[회원 목록]");
 
-    Member[] list = memberList.toArray();
+    Object[] list = memberList.toArray();
 
-    for (Member member : list) {
+    for (Object obj : list) {
+      Member member = (Member) obj;
       System.out.printf("%d, %s, %s, %s, %s\n", 
           member.no, 
           member.name, 
@@ -112,16 +111,10 @@ public class MemberHandler {
       return;
     }
 
-
+    memberList.remove(member);
 
     System.out.println("회원을 삭제하였습니다.");
   }
-
-
-
-
-
-
 
 }
 
