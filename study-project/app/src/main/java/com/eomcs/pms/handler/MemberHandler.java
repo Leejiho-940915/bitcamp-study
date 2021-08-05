@@ -8,6 +8,8 @@ public class MemberHandler {
 
   MemberList2 memberList = new MemberList2();
 
+
+
   public MemberList2 getMemberList() {
     return memberList;
   }
@@ -16,6 +18,8 @@ public class MemberHandler {
     System.out.println("[회원 등록]");
 
     Member member = new Member();
+
+
 
     member.no = Prompt.inputInt("번호? ");
     member.name = Prompt.inputString("이름? ");
@@ -30,11 +34,9 @@ public class MemberHandler {
 
   public void list() {
     System.out.println("[회원 목록]");
+    Member[] list = memberList.toArray();
 
-    Object[] list = memberList.toArray();
-
-    for (Object obj : list) {
-      Member member = (Member) obj;
+    for (Member member : list) {
       System.out.printf("%d, %s, %s, %s, %s\n", 
           member.no, 
           member.name, 
@@ -115,6 +117,12 @@ public class MemberHandler {
 
     System.out.println("회원을 삭제하였습니다.");
   }
+
+
+
+
+
+
 
 }
 

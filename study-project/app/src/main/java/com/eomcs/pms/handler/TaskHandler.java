@@ -6,14 +6,16 @@ import com.eomcs.util.Prompt;
 
 public class TaskHandler {
 
-  TaskList2 taskList = new TaskList2();
   MemberList2 memberList;
-
+  TaskList2 taskList = new TaskList2();
 
   public TaskHandler(MemberList2 memberList) {
     this.memberList = memberList;
   }
 
+
+  // add()에서 사용할 MemberHandler는 메서드를 호출하기 전에 
+  // 인스턴스 변수에 미리 주입되어 있어야 한다.
   public void add() {
     System.out.println("[작업 등록]");
 
@@ -30,16 +32,14 @@ public class TaskHandler {
     }
 
     taskList.add(task);
+
   }
 
   //다른 패키지에 있는 App 클래스가 다음 메서드를 호출할 수 있도록 공개한다.
   public void list() {
     System.out.println("[작업 목록]");
-
-    Object[] list = taskList.toArray();
-
-    for (Object obj : list) {
-      Task task = (Task) obj;
+    Task[] list = taskList.toArray();
+    for (Task task : list) {
       System.out.printf("%d, %s, %s, %s, %s\n",
           task.no, 
           task.content, 
@@ -65,6 +65,8 @@ public class TaskHandler {
     System.out.printf("담당자: %s\n", task.owner);
   }
 
+  // update()가 사용할 MemberHandler 는 
+  // 인스턴스 변수에 미리 주입 받기 때문에 파라미터로 받을 필요가 없다.
   public void update() {
     System.out.println("[작업 변경]");
     int no = Prompt.inputInt("번호? ");
@@ -120,6 +122,9 @@ public class TaskHandler {
     System.out.println("작업를 삭제하였습니다.");
   }
 
+
+
+
   private String getStatusLabel(int status) {
     switch (status) {
       case 1: return "진행중";
@@ -131,7 +136,8 @@ public class TaskHandler {
   private String promptOwner(String label) {
     while (true) {
       String owner = Prompt.inputString(label);
-      if (this.memberList.exist(owner)) {
+      // MemberHandler의 인스턴스는 미리 인스턴스 변수에 주입 받은 것을 사용한다.
+      if (memberList.exist(owner)) {
         return owner;
       } else if (owner.length() == 0) {
         return null;
