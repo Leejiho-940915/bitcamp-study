@@ -1,9 +1,8 @@
 package com.eomcs.pms.handler;
 
-public class ArrayList implements List {
+public class ArrayList implements List{
 
   static final int MAX_LENGTH = 5;
-
   Object[] list = new Object[MAX_LENGTH];
   int size = 0;
 
@@ -14,7 +13,7 @@ public class ArrayList implements List {
       for (int i = 0; i < size; i++) {
         arr[i] = list[i];
       }
-      list = arr;
+      list = arr; 
     }
     this.list[this.size++] = item;
   }
@@ -51,5 +50,4 @@ public class ArrayList implements List {
     }
     return -1;
   }
-
 }

@@ -12,7 +12,6 @@ public class MemberHandler {
     this.memberList = memberList;
   }
 
-
   public void add() {
     System.out.println("[회원 등록]");
 
@@ -34,8 +33,8 @@ public class MemberHandler {
 
     Object[] list = memberList.toArray();
 
-    for (Object obj : list) {
-      Member member = (Member) obj;
+    for (Object item : list) {
+      Member member = (Member) item;
       System.out.printf("%d, %s, %s, %s, %s\n", 
           member.no, 
           member.name, 
@@ -119,8 +118,8 @@ public class MemberHandler {
 
   private Member findByNo(int no) {
     Object[] arr = memberList.toArray();
-    for (Object obj : arr) {
-      Member member = (Member) obj;
+    for (Object item : arr) {
+      Member member = (Member) item;
       if (member.no == no) {
         return member;
       }
@@ -130,8 +129,8 @@ public class MemberHandler {
 
   public boolean exist(String name) {
     Object[] arr = memberList.toArray();
-    for (Object obj : arr) {
-      Member member = (Member) obj;
+    for (Object item : arr) {
+      Member member = (Member) item;
       if (member.name.equals(name)) {
         return true;
       }
@@ -142,7 +141,7 @@ public class MemberHandler {
   public String promptMember(String label) {
     while (true) {
       String owner = Prompt.inputString(label);
-      if (this.exist(owner)) {
+      if (exist(owner)) {
         return owner;
       } else if (owner.length() == 0) {
         return null;
@@ -155,7 +154,7 @@ public class MemberHandler {
     String members = "";
     while (true) {
       String member = Prompt.inputString(label);
-      if (this.exist(member)) {
+      if (exist(member)) {
         if (members.length() > 0) {
           members += ",";
         }

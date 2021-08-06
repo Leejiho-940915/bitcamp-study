@@ -13,10 +13,10 @@ import com.eomcs.util.Prompt;
 
 public class App {
 
-  List boardList = new ArrayList();
-  List memberList = new LinkedList();
+  List boardList = new LinkedList();
+  List memberList = new ArrayList();
   List projectList = new LinkedList();
-  List taskList = new LinkedList();
+  List taskList = new ArrayList();
 
   BoardHandler boardHandler = new BoardHandler(boardList);
   MemberHandler memberHandler = new MemberHandler(memberList);
@@ -24,7 +24,7 @@ public class App {
   TaskHandler taskHandler = new TaskHandler(taskList, memberHandler);
 
   public static void main(String[] args) {
-    App app = new App(); 
+    App app = new App();
     app.service();
   }
 

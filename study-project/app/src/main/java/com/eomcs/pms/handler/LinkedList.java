@@ -1,6 +1,6 @@
 package com.eomcs.pms.handler;
 
-public class LinkedList implements List {
+public class LinkedList implements List{
 
   static class Node {
     Object item;
@@ -10,26 +10,20 @@ public class LinkedList implements List {
       this.item = item;
     }
   }
-
   Node head;
   Node tail;
-  int size;
+  int size = 0;
 
   @Override
   public void add(Object item) {
-    // 새 노드를 만든다. 생성자를 호출할 때, 노드에 담을 Board 객체 주소를 넘긴다. 
     Node node = new Node(item);
 
     if (head == null) {
       tail = head = node;
     } else {
-      // 기존에 tail이 가리키는 마지막 노드의 next 변수에 새 노드 주소를 저장한다.
       tail.next = node;
-
-      // 새로 만든 노드를 마지막 노드로 설정한다. 
       tail = node;
     }
-
     size++;
   }
 
@@ -78,10 +72,3 @@ public class LinkedList implements List {
     return false;
   }
 }
-
-
-
-
-
-
-

@@ -39,8 +39,8 @@ public class TaskHandler {
 
     Object[] list = taskList.toArray();
 
-    for (Object obj : list) {
-      Task task = (Task) obj;
+    for (Object item : list) {
+      Task task = (Task) item;
       System.out.printf("%d, %s, %s, %s, %s\n",
           task.no, 
           task.content, 
@@ -145,17 +145,16 @@ public class TaskHandler {
     return Prompt.inputInt("> ");
   }
 
-  private Task findByNo(int no) {
+  public Task findByNo(int no) {
     Object[] arr = taskList.toArray();
-    for (Object obj : arr) {
-      Task task = (Task) obj;
+    for (Object item : arr) {
+      Task task = (Task) item;
       if (task.no == no) {
         return task;
       }
     }
     return null;
   }
-
 }
 
 

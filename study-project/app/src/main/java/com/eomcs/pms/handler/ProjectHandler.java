@@ -42,8 +42,8 @@ public class ProjectHandler {
 
     Object[] list = projectList.toArray();
 
-    for (Object obj : list) {
-      Project project = (Project) obj;
+    for (Object item : list) {
+      Project project = (Project) item;
       System.out.printf("%d, %s, %s, %s, %s, [%s]\n",
           project.no, 
           project.title, 
@@ -138,17 +138,17 @@ public class ProjectHandler {
   }
 
 
+
   private Project findByNo(int no) {
     Object[] arr = projectList.toArray();
-    for (Object obj : arr) {
-      Project project = (Project) obj;
+    for (Object item : arr) {
+      Project project = (Project) item;
       if (project.no == no) {
         return project;
       }
     }
     return null;
   }
-
 }
 
 

@@ -31,8 +31,8 @@ public class BoardHandler {
 
     Object[] list = boardList.toArray();
 
-    for (Object obj : list) {
-      Board board = (Board) obj;
+    for (Object item : list) {
+      Board board = (Board) item;
       System.out.printf("%d, %s, %s, %s, %d, %d\n", 
           board.no, 
           board.title, 
@@ -108,10 +108,10 @@ public class BoardHandler {
     System.out.println("게시글을 삭제하였습니다.");
   }
 
-  private Board findByNo(int no) {
+  public Board findByNo(int no) {
     Object[] arr = boardList.toArray();
-    for (Object obj : arr) {
-      Board board = (Board) obj;
+    for (Object item : arr) {
+      Board board = (Board) item;
       if (board.no == no) {
         return board;
       }
