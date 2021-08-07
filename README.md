@@ -214,3 +214,9 @@
 - 자바 객체지향 문법(eomcs-java/com.eomcs.oop)
   - ex06: c ~ * : 다형성(다형적 변수, 오버로딩, 오버라이딩)(계속)
   - ex08: a ~ b : 캡슐화(private, (default), protected, public)
+
+## 26일차(2021-08-02,월)
+
+- 실전 프로젝트(eomcs-java-project)
+  - 08-a. `Composite` 디자인 패턴 : 적용 전
+  - 08-b. `Composite` 디자인 패턴 : 적용 후

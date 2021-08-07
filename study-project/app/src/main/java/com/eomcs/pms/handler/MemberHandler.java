@@ -6,11 +6,10 @@ import com.eomcs.util.Prompt;
 
 public class MemberHandler {
 
-  List memberList;
+  static final int MAX_LENGTH = 5;
 
-  public MemberHandler(List memberList) {
-    this.memberList = memberList;
-  }
+  Member[] members = new Member[MAX_LENGTH];
+  int size = 0;
 
   public void add() {
     System.out.println("[회원 등록]");
@@ -25,22 +24,18 @@ public class MemberHandler {
     member.tel = Prompt.inputString("전화? ");
     member.registeredDate = new Date(System.currentTimeMillis());
 
-    memberList.add(member);
+    this.members[this.size++] = member;
   }
 
   public void list() {
     System.out.println("[회원 목록]");
-
-    Object[] list = memberList.toArray();
-
-    for (Object item : list) {
-      Member member = (Member) item;
+    for (int i = 0; i < this.size; i++) {
       System.out.printf("%d, %s, %s, %s, %s\n", 
-          member.no, 
-          member.name, 
-          member.email, 
-          member.tel, 
-          member.registeredDate);
+          this.members[i].no, 
+          this.members[i].name, 
+          this.members[i].email, 
+          this.members[i].tel, 
+          this.members[i].registeredDate);
     }
   }
 
@@ -60,6 +55,7 @@ public class MemberHandler {
     System.out.printf("사진: %s\n", member.photo);
     System.out.printf("전화: %s\n", member.tel);
     System.out.printf("등록일: %s\n", member.registeredDate);
+
   }
 
   public void update() {
@@ -73,13 +69,12 @@ public class MemberHandler {
       return;
     }
 
-    String name = Prompt.inputString("이름(" + member.name  + ")? ");
+    String name = Prompt.inputString("이름(" + member.name + ")? ");
     String email = Prompt.inputString("이메일(" + member.email + ")? ");
-    String password = Prompt.inputString("암호? ");
     String photo = Prompt.inputString("사진(" + member.photo + ")? ");
     String tel = Prompt.inputString("전화(" + member.tel + ")? ");
 
-    String input = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
+    String input = Prompt.inputString("정말 변경하시겠습니까?(y/n) ");
     if (input.equalsIgnoreCase("n") || input.length() == 0) {
       System.out.println("회원 변경을 취소하였습니다.");
       return;
@@ -87,7 +82,6 @@ public class MemberHandler {
 
     member.name = name;
     member.email = email;
-    member.password = password;
     member.photo = photo;
     member.tel = tel;
 
@@ -98,76 +92,108 @@ public class MemberHandler {
     System.out.println("[회원 삭제]");
     int no = Prompt.inputInt("번호? ");
 
-    Member member = findByNo(no);
+    int index = indexOf(no);
 
-    if (member == null) {
+    if (index == -1) {
       System.out.println("해당 번호의 회원이 없습니다.");
       return;
     }
 
-    String input = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
+    String input = Prompt.inputString("정말 삭제하시겠습니까?(y/n) ");
     if (input.equalsIgnoreCase("n") || input.length() == 0) {
-      System.out.println("회원 삭제를 취소하였습니다.");
+      System.out.println("회원 삭제를 취소하였습니다");
       return;
     }
 
-    memberList.remove(member);
-
-    System.out.println("회원을 삭제하였습니다.");
-  }
-
-  private Member findByNo(int no) {
-    Object[] arr = memberList.toArray();
-    for (Object item : arr) {
-      Member member = (Member) item;
-      if (member.no == no) {
-        return member;
-      }
+    for (int i = index + 1; i < this.size; i++) {
+      this.members[i - 1] = this.members[i];
     }
-    return null;
+    this.members[--this.size] = null;
+    System.out.println("회원을 삭제하였습니다.");
+
   }
 
-  public boolean exist(String name) {
-    Object[] arr = memberList.toArray();
-    for (Object item : arr) {
-      Member member = (Member) item;
-      if (member.name.equals(name)) {
+  boolean exist(String name) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.members[i].name.equals(name)) {
         return true;
       }
     }
     return false;
   }
 
-  public String promptMember(String label) {
-    while (true) {
-      String owner = Prompt.inputString(label);
-      if (exist(owner)) {
-        return owner;
-      } else if (owner.length() == 0) {
-        return null;
+
+  private Member findByNo(int no) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.members[i].no == no) {
+        return this.members[i];
       }
-      System.out.println("등록된 회원이 아닙니다.");
     }
+    return null;
   }
 
-  public String promptMembers(String label) {
-    String members = "";
-    while (true) {
-      String member = Prompt.inputString(label);
-      if (exist(member)) {
-        if (members.length() > 0) {
-          members += ",";
-        }
-        members += member;
-        continue;
-      } else if (member.length() == 0) {
-        break;
-      } 
-      System.out.println("등록된 회원이 아닙니다.");
+  private int indexOf(int no) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.members[i].no == no) {
+        return i;
+      }
     }
-    return members;
+    return -1;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
