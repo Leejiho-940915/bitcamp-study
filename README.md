@@ -220,3 +220,10 @@
 - 실전 프로젝트(eomcs-java-project)
   - 08-a. `Composite` 디자인 패턴 : 적용 전
   - 08-b. `Composite` 디자인 패턴 : 적용 후
+
+## 27일차(2021-08-03,화)
+
+- 실전 프로젝트(eomcs-java-project)
+  - 08-b. `Composite` 디자인 패턴 : 적용 후(계속)
+  - 08-c. `Composite` 디자인 패턴 : 익명 클래스 활용
+  - 08-d. `Composite` 디자인 패턴 : 스태틱 멤버를 인스턴스 멤버로 전환
