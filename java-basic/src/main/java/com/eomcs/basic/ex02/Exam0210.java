@@ -40,6 +40,7 @@ public class Exam0210 {
     Double d2 = Double.valueOf(3.14159);
     Boolean bool2 = Boolean.valueOf(true);
     Character c2 = Character.valueOf((char)0x41);
+
   }
 }
 
