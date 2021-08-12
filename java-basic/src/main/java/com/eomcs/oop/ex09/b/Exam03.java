@@ -3,7 +3,7 @@ package com.eomcs.oop.ex09.b;
 
 interface MyInterface3 {
   void m1();
-  default void x() {};
+
   // default method:
   // - 기존 프로젝트에 영향을 끼치지 않으면서 기존 규칙에
   //   새 메서드를 추가할 때 유용한다.
@@ -39,8 +39,7 @@ class MyInterface3Impl implements MyInterface3 {
   }
 
   // default 메서드는 오버라이딩 해도 되고 안해도 된다.
-  // => m3() 는 이 클래스 쪽에서 오버라이딩을 하지 않았다.
-
+  // => m3() 는 이 클래스에서 오버라이딩을 하지 않았다.
 }
 
 public class Exam03 {

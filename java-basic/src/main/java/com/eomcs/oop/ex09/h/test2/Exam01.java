@@ -1,7 +1,7 @@
-package com.eomcs.oop.ex09.i.test2;
+package com.eomcs.oop.ex09.h.test2;
 
-import com.eomcs.oop.ex09.i.test1.FilmPrinter;
-import com.eomcs.oop.ex09.i.test1.PaperPrinter;
+import com.eomcs.oop.ex09.h.test1.FilmPrinter;
+import com.eomcs.oop.ex09.h.test1.PaperPrinter;
 
 public class Exam01 {
 
@@ -21,6 +21,7 @@ public class Exam01 {
     // 안타깝게도 기존 프린터는 새 프린터 규격에 맞지 않아서
     // 출력하는데 사용할 수 없다.
     // => 컴파일 오류!
+    //
     //display(p2, "안녕하세요!", "bitcamp bitcamp bitcamp bitcamp bitcamp");
     //display(p3, "안녕하세요!", "bitcamp bitcamp bitcamp bitcamp bitcamp");
   }
