@@ -23,12 +23,12 @@ class B2 {
       // inner 객체에 보관된 바깥 객체 주소를 사용해야 한다.
       // 즉 컴파일러가 내부적으로 자동 생성한 바깥 객체 주소를 담는 필드를 사용해야 한다.
       // 문제는 컴파일러가 자동 생성한 필드 이름이 뭔지 모른다.
-      // 그래서 자바는 inner 객체에 보관된 바깥 객체를 가리키기 위해
+      // 그래서 자바는 inner 객체에 보관된 바깥 객체를 가리키기 위해 
       // 다음의 문법을 제공하고 있다.
       // =>   바깥클래스명.this
       // 위의 문법을 이용하여 바깥 객체에 접근할 수 있다.
-      // 즉 inner 객체를 만들 때 사용한 바깥 객체에 접근하고 싶다면
-      // =>  B2.this 문법을 사용하라!
+      // 즉 inner 객체를 만들 때 사용한 바깥 객체에 접근하고 싶다면 
+      // =>  B2.this  문법을 사용하라!
       // 
       System.out.println(B2.this.v2); // ---> this$0.v2
       B2.this.m2();
@@ -43,17 +43,20 @@ public class Exam0220 {
     outer.v2 = 100;
     outer.m2();
 
+
     B2 outer2 = new B2();
-    outer.v2 = 200;
+    outer2.v2 = 200;
     outer2.m2();
 
     // inner 객체 생성
     B2.X inner = outer.new X(); // --> new X(outer)
-    B2.X inner2 = outer2.new X(); // --> nex X(outer2)
+    B2.X inner2 = outer2.new X(); // --> new X(outer2)
 
     inner.test();
     inner2.test();
 
+    B2 outer3 = null;
+    B2.X inner3 = outer3.new X(); 
   }
 
 }
