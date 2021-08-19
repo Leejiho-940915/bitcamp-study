@@ -2,8 +2,6 @@ package com.eomcs.pms.domain;
 
 import java.sql.Date;
 
-//한 회원의 데이터를 저장할 수 있도록
-//새 구조의 데이터 타입(user defined data type)을 정의한다.
 public class Member {
   private int no;
   private String name;
@@ -12,6 +10,7 @@ public class Member {
   private String photo;
   private String tel;
   private Date registeredDate;
+
   public int getNo() {
     return no;
   }
@@ -54,6 +53,4 @@ public class Member {
   public void setRegisteredDate(Date registeredDate) {
     this.registeredDate = registeredDate;
   }
-
-
 }
