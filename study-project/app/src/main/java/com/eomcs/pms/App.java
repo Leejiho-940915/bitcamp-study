@@ -157,9 +157,6 @@ public class App {
         taskHandler.delete(); 
       }});
 
-
-
-
     return mainMenuGroup;
   }
 }
