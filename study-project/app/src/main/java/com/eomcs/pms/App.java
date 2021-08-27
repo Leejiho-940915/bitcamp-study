@@ -7,10 +7,14 @@ import com.eomcs.menu.Menu;
 import com.eomcs.menu.MenuGroup;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.pms.domain.Member;
+import com.eomcs.pms.domain.OrganizationRequestDTO;
+import com.eomcs.pms.domain.PersonalRequestDTO;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.pms.domain.Task;
 import com.eomcs.pms.handler.BoardHandler;
 import com.eomcs.pms.handler.MemberHandler;
+import com.eomcs.pms.handler.OrganizationVolunteerRequestHandler;
+import com.eomcs.pms.handler.PersonalVolunteerRequestHandler;
 import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.util.Prompt;
@@ -22,10 +26,16 @@ public class App {
   List<Project> projectList = new ArrayList<>();
   List<Task> taskList = new LinkedList<>();
 
+  List<OrganizationRequestDTO> organizationList = new LinkedList<>();
+  List<PersonalRequestDTO> personalList = new LinkedList<>();
+
   BoardHandler boardHandler = new BoardHandler(boardList);
   MemberHandler memberHandler = new MemberHandler(memberList);
   ProjectHandler projectHandler = new ProjectHandler(projectList, memberHandler);
   TaskHandler taskHandler = new TaskHandler(taskList, memberHandler);
+
+  PersonalVolunteerRequestHandler PersonalHandler = new PersonalVolunteerRequestHandler(personalList);
+  OrganizationVolunteerRequestHandler organizationHandler = new OrganizationVolunteerRequestHandler(organizationList);
 
   public static void main(String[] args) {
     App app = new App(); 
@@ -40,6 +50,22 @@ public class App {
   Menu createMenu() {
     MenuGroup mainMenuGroup = new MenuGroup("메인");
     mainMenuGroup.setPrevMenuTitle("종료");
+
+    MenuGroup volunteerMenu = new MenuGroup("함께해요");
+    mainMenuGroup.add(volunteerMenu);
+
+    volunteerMenu.add(new Menu("개인 봉사 신청") {
+      @Override
+      public void execute() {
+        PersonalHandler.apply(); 
+      }});
+
+    volunteerMenu.add(new Menu("기관 봉사 신청") {
+      @Override
+      public void execute() {
+        organizationHandler.apply(); 
+      }});
+
 
     MenuGroup boardMenu = new MenuGroup("게시판");
     mainMenuGroup.add(boardMenu);
