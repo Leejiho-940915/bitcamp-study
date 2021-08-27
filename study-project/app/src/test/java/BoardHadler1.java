@@ -18,6 +18,7 @@ public class BoardHandler1 {
 
     Board board = new Board();
 
+
     board.setNo(Prompt.inputInt("? "));
     board.setTitle(Prompt.inputString("제목? "));
     board.setContent(Prompt.inputString("내용? "));
