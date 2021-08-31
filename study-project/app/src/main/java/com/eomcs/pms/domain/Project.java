@@ -1,6 +1,8 @@
 package com.eomcs.pms.domain;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Project {
   private int no;
@@ -8,8 +10,16 @@ public class Project {
   private String content;
   private Date startDate;
   private Date endDate;
-  private String owner;
-  private String members;
+  private Member owner;
+  private List<Member> members;
+  private List<Task> tasks = new ArrayList<>();
+
+  @Override
+  public String toString() {
+    return "Project [no=" + no + ", title=" + title + ", content=" + content + ", startDate="
+        + startDate + ", endDate=" + endDate + ", owner=" + owner + ", members=" + members
+        + ", tasks=" + tasks + "]";
+  }
 
   public int getNo() {
     return no;
@@ -41,16 +51,23 @@ public class Project {
   public void setEndDate(Date endDate) {
     this.endDate = endDate;
   }
-  public String getOwner() {
+  public Member getOwner() {
     return owner;
   }
-  public void setOwner(String owner) {
+  public void setOwner(Member owner) {
     this.owner = owner;
   }
-  public String getMembers() {
+  public List<Member> getMembers() {
     return members;
   }
-  public void setMembers(String members) {
+  public void setMembers(List<Member> members) {
     this.members = members;
   }
+  public List<Task> getTasks() {
+    return tasks;
+  }
+  public void setTasks(List<Task> tasks) {
+    this.tasks = tasks;
+  }
 }
+

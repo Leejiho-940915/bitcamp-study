@@ -15,6 +15,7 @@ public class AuthHandler {
 
   public AuthHandler(List<Member> memberList) {
     this.memberList = memberList;
+
   }
 
   public void login() {
