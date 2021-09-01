@@ -16,7 +16,6 @@ public class Member {
     return "Member [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password
         + ", photo=" + photo + ", tel=" + tel + ", registeredDate=" + registeredDate + "]";
   }
-
   public int getNo() {
     return no;
   }

@@ -15,8 +15,9 @@ public abstract class Menu {
   }
 
   public Menu(String title, int enableState) {
-    this.title = title; 
+    this(title); // 메뉴 이름 설정은 기존 생성자를 통해 처리한다.
     this.enableState = enableState;
   }
+
   public abstract void execute();
 }

@@ -3,7 +3,7 @@ package com.eomcs.menu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import com.eomcs.pms.handler.AuthHandler;
+import com.eomcs.pms.handler.AuthLoginHandler;
 import com.eomcs.util.Prompt;
 
 // 역할
@@ -29,7 +29,6 @@ public class MenuGroup extends Menu {
     public void execute() {
     }
   }
-
   static PrevMenu prevMenu = new PrevMenu();
 
   // 생성자를 정의하지 않으면 컴파일러가 기본 생성자를 자동으로 추가해 준다.
@@ -112,6 +111,7 @@ public class MenuGroup extends Menu {
           breadCrumb.pop();
           return;
         }
+
         menu.execute();
 
       } catch (Exception e) {
@@ -143,23 +143,22 @@ public class MenuGroup extends Menu {
   // 왜?
   // - 메뉴 출력 속도를 빠르게 하기 위함.
   // - 메뉴를 출력할 때 출력할 메뉴와 출력하지 말아야 할 메뉴를 구분하는 시간을 줄이기 위함.
-  //
+  // 
   private List<Menu> getMenuList() {
     ArrayList<Menu> menuList = new ArrayList<>();
     for (int i = 0; i < this.size; i++) {
-
-      if (this.childs[i].enableState == Menu.ENABLE_LOGOUT &&
-          AuthHandler.getLoginUser() == null) {
+      if (this.childs[i].enableState == Menu.ENABLE_LOGOUT && 
+          AuthLoginHandler.getLoginUser() == null) {
         menuList.add(this.childs[i]);
 
-      } else if (this.childs[i].enableState == Menu.ENABLE_LOGIN &&
-          AuthHandler.getLoginUser() != null) {
+      } else if (this.childs[i].enableState == Menu.ENABLE_LOGIN && 
+          AuthLoginHandler.getLoginUser() != null) {
         menuList.add(this.childs[i]);
 
       } else if (this.childs[i].enableState == Menu.ENABLE_ALL) {
         menuList.add(this.childs[i]);
-      }
-    } 
+      } 
+    }
     return menuList;
   }
 
@@ -170,7 +169,7 @@ public class MenuGroup extends Menu {
   private void printMenuList(List<Menu> menuList) {
     int i = 1;
     for (Menu menu : menuList) {
-      System.out.printf("%d. %s\n", i++, menu.title);
+      System.out.printf("%d. %-20s\n", i++, menu.title);
     }
 
     if (!disablePrevMenu) {
@@ -179,7 +178,6 @@ public class MenuGroup extends Menu {
   }
 
   private Menu selectMenu(List<Menu> menuList) {
-
     int menuNo = Prompt.inputInt("선택> ");
 
     if (menuNo < 0 || menuNo > menuList.size()) {
@@ -187,42 +185,13 @@ public class MenuGroup extends Menu {
     }
 
     if (menuNo == 0 && !disablePrevMenu) {
-      return prevMenu; // 호출한 쪽에 '이전 메뉴' 선택을 알리기 위해
-    }
+      return prevMenu; // 호출한 쪽에 '이전 메뉴' 선택을 알리게 위해 
+    } 
 
     return menuList.get(menuNo - 1);
   }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

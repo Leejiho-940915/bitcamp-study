@@ -4,18 +4,17 @@ import java.util.List;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class AuthHandler {
+public class AuthLoginHandler {
 
   List<Member> memberList;
-  static Member loginUser;
 
+  static Member loginUser;
   public static Member getLoginUser() {
     return loginUser;
   }
 
-  public AuthHandler(List<Member> memberList) {
+  public AuthLoginHandler(List<Member> memberList) {
     this.memberList = memberList;
-
   }
 
   public void login() {
@@ -34,37 +33,16 @@ public class AuthHandler {
     }
   }
 
-  public void displayLoginUser() {
-    System.out.println("[내정보]");
-
-    if (loginUser == null) {
-      System.out.println("로그인 하지 않았습니다.");
-      return;
-    }
-
-    System.out.printf("이름: %s\n", loginUser.getName());
-    System.out.printf("이메일: %s\n", loginUser.getEmail());
-    System.out.printf("사진: %s\n", loginUser.getPhoto());
-    System.out.printf("전화: %s\n", loginUser.getTel());
-    System.out.printf("등록일: %s\n", loginUser.getRegisteredDate());
-  }
-
-  public void logout() {
-    System.out.println("[로그아웃]");
-
-    loginUser = null;
-    System.out.println("로그아웃 하였습니다..");
-  }
-
   private Member findByEmailPassword(String email, String password) {
     for (Member member : memberList) {
-      if (member.getEmail().equalsIgnoreCase(email) && 
+      if (member.getEmail().equalsIgnoreCase(email) &&
           member.getPassword().equals(password)) {
         return member;
       }
     }
     return null;
   }
+
 }
 
 
