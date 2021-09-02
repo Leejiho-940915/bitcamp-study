@@ -10,7 +10,7 @@ public class MemberUpdateHandler extends AbstractMemberHandler {
     super(memberList);
   }
 
-  public void update() {
+  public void execute() {
     System.out.println("[회원 변경]");
     int no = Prompt.inputInt("번호? ");
 

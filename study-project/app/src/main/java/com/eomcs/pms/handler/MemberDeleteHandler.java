@@ -10,7 +10,7 @@ public class MemberDeleteHandler extends AbstractMemberHandler {
     super(memberList);
   }
 
-  public void delete() {
+  public void execute() {
     System.out.println("[회원 삭제]");
     int no = Prompt.inputInt("번호? ");
 

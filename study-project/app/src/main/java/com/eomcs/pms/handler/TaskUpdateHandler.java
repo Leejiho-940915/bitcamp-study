@@ -8,14 +8,14 @@ import com.eomcs.util.Prompt;
 
 public class TaskUpdateHandler extends AbstractTaskHandler {
 
-  public TaskUpdateHandler(AbstractProjectHandler projectHandler) {
-    super(projectHandler);
+  public TaskUpdateHandler(ProjectPrompt projectPrompt) {
+    super(projectPrompt);
   }
 
-  public void update() {
+  public void execute() {
     System.out.println("[작업 변경]");
 
-    Project project = projectHandler.promptProject();
+    Project project = projectPrompt.promptProject();
     if (project == null) {
       System.out.println("작업 변경을 취소합니다.");
       return;
@@ -41,7 +41,7 @@ public class TaskUpdateHandler extends AbstractTaskHandler {
     String content = Prompt.inputString(String.format("내용(%s)? ", task.getContent()));
     Date deadline = Prompt.inputDate(String.format("마감일(%s)? ", task.getDeadline()));
     int status = promptStatus(task.getStatus());
-    Member owner = MemberPromptHandler.promptMember(
+    Member owner = MemberPrompt.promptMember(
         String.format("담당자(%s)?(취소: 빈 문자열) ", task.getOwner().getName()), 
         project.getMembers());
     if (owner == null) {

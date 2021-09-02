@@ -4,12 +4,12 @@ import com.eomcs.pms.domain.Project;
 import com.eomcs.pms.domain.Task;
 import com.eomcs.util.Prompt;
 
-public abstract class AbstractTaskHandler {
+public abstract class AbstractTaskHandler implements Command {
 
-  protected AbstractProjectHandler projectHandler;
+  protected ProjectPrompt projectPrompt;
 
-  public AbstractTaskHandler(AbstractProjectHandler projectHandler) {
-    this.projectHandler = projectHandler;
+  public AbstractTaskHandler(ProjectPrompt projectPrompt) {
+    this.projectPrompt = projectPrompt;
   }
 
   protected static void printTasks(Project project) {

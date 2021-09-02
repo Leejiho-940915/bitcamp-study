@@ -9,7 +9,7 @@ public class ProjectListHandler extends AbstractProjectHandler {
     super(projectList);
   }
 
-  public void list() {
+  public void execute() {
     System.out.println("[프로젝트 목록]");
 
     for (Project project : projectList) {

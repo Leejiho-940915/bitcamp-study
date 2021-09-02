@@ -10,7 +10,7 @@ public class BoardSearchHandler extends AbstractBoardHandler {
     super(boardList);
   }
 
-  public void search() {
+  public void execute() {
     System.out.println("[게시글 검색]");
 
     String input = Prompt.inputString("검색어? ");

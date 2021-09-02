@@ -55,7 +55,7 @@ public class MemberAddHandler extends AbstractMemberHandler {
     memberList.add(testUser);
   }
 
-  public void add() {
+  public void execute() {
     System.out.println("[회원 등록]");
 
     Member member = new Member();
