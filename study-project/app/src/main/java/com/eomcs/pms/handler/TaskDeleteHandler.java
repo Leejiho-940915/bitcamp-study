@@ -10,6 +10,7 @@ public class TaskDeleteHandler extends AbstractTaskHandler {
     super(projectPrompt);
   }
 
+  @Override
   public void execute() {
     System.out.println("[작업 삭제]");
 

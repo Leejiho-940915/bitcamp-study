@@ -15,7 +15,6 @@ public class AuthLoginHandler implements Command {
   public static Member getLoginUser() {
     return loginUser;
   }
-
   public static int getUserAccessLevel() {
     return userAccessLevel;
   }

@@ -11,6 +11,7 @@ public class BoardAddHandler extends AbstractBoardHandler {
     super(boardList);
   }
 
+  @Override
   public void execute() {
     System.out.println("[새 게시글]");
 
@@ -25,7 +26,6 @@ public class BoardAddHandler extends AbstractBoardHandler {
 
     boardList.add(board);
   }
-
 }
 
 
