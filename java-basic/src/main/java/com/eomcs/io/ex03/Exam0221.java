@@ -10,7 +10,7 @@ public class Exam0221 {
 
     char[] buf = new char[100];
 
-    int count = in.read(buf); 
+    int count = in.read(buf);  // char 배열에 담을 때 
     String str = new String(buf, 0, count);
 
     in.close();
