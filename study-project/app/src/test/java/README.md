@@ -1,1 +1,1 @@
-# src/test/resources
+# src/test/java
