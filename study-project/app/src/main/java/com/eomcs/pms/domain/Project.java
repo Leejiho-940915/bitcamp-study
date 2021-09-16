@@ -2,6 +2,7 @@ package com.eomcs.pms.domain;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.eomcs.csv.CsvValue;
 
@@ -54,13 +55,7 @@ public class Project implements CsvValue {
 
     // => 작업들의 정보를 저장한다.
     for (Task t : this.getTasks()) {
-      strBuilder.append(String.format("%d,%s,%s,%d,%d,%s,", 
-          t.getNo(),
-          t.getContent(),
-          t.getDeadline(),
-          t.getStatus(),
-          t.getOwner().getNo(),
-          t.getOwner().getName()));
+      strBuilder.append(String.format("%s,", t.toCsvString()));
     }
 
     return strBuilder.toString();
@@ -111,16 +106,18 @@ public class Project implements CsvValue {
     for (int i = 0, offset = lastIndex + 2; i < taskSize; i++, offset += 6) {
       // => 파일에서 작업 데이터를 로딩한다.
       Task t = new Task();
-      t.setNo(Integer.valueOf(values[offset]));
-      t.setContent(values[offset + 1]);
-      t.setDeadline(Date.valueOf(values[offset + 2]));
-      t.setStatus(Integer.valueOf(values[offset + 3]));
 
-      Member worker = new Member();
-      worker.setNo(Integer.valueOf(values[offset + 4]));
-      worker.setName(values[offset + 5]);
+      t.loadCsv(String.join(",", Arrays.copyOfRange(values, offset, offset + 6)));
 
-      t.setOwner(worker);
+      //      t.loadCsv(String.format("%s,%s,%s,%d,%s,%s", 
+      //          values[offset],
+      //          values[offset + 1],
+      //          values[offset + 2],
+      //          values[offset + 3],
+      //          values[offset + 4],
+      //          values[offset + 5]
+      //          ));
+
 
       // => 프로젝트 멤버에 추가한다.
       this.getTasks().add(t);
