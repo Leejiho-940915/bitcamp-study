@@ -661,3 +661,66 @@
 - 자바 스트림 API(eomcs-java/com.eomcs.io)
   - ex04: FileInputStream/FileOutputStream 을 이용하여 객체의 필드 값 출력하기
   - ex05: FileInputStream/FileOutputStream 을 상속 받아서 기능을 확장하기
+
+## 55일차(2021-09-13,월)
+
+- 자바 스트림 API(eomcs-java/com.eomcs.io)
+  - ex06: 버퍼를 활용하는 이유
+  - ex07: 상속으로 기능을 확장하는 방식의 한계점 이해하기
+  - ex08: 포함관계로 기능을 확장하기
+  - ex09: 데코레이터 설계 패턴을 적용하기
+  - ex10: 자바에서 제공하는 스트림 클래스 사용하기
+  - ex11: 객체를 serialize/deserialize 하기
+- 팀 프로젝트
+  - 팀별 프로젝트 구현
+
+## 56일차(2021-09-14,화)
+
+- 자바 스트림 API(eomcs-java/com.eomcs.io)
+  - ex11: 객체를 serialize/deserialize 하기(계속)
+  - ex12: 연습
+  - ex13: 스트림 API를 사용하여 바이트 배열이나 스트링 버퍼에 출력하기
+  - ex14: 입출력 예외처리
+- 실전 프로젝트(eomcs-java-project)
+  - 16-a. 파일 입출력 다루기 : 바이너리 형식으로 데이터 입출력(계속)
+    - BufferedInputStream/BufferedOutputStream 클래스 사용하기
+    - 제네릭 문법 활용하기
+  - 16-b. 파일 입출력 다루기 : 텍스트 형식으로 데이터 입출력
+    - FileReader/FileWriter 클래스 사용하기
+    - BufferedReader/PrintWriter 데코레이터 클래스 사용하기
+- 팀 프로젝트
+  - 팀별 프로젝트 구현
+
+## 57일차(2021-09-15,수)
+
+- 실전 프로젝트(eomcs-java-project)
+  - 16-b. 파일 입출력 다루기 : 텍스트 형식으로 데이터 입출력(계속)
+    - BufferedReader/BufferedWriter 데코레이터 클래스 사용하기
+    - 리팩토링 : 'Information Expert' GRASP 적용
+    - 리팩토링 : '메서드 추출'
+    - 리팩토링 : 제네릭 적용
+
+## 58일차(2021-09-16,목)
+
+- JSON Open API 사용법(eomcs-java/com.eomcs.openapi.json)
+  - Gson 라이브러리를 사용하여 JSON 문자열을 다루는 방법
+- 실전 프로젝트(eomcs-java-project)
+  - 16-b. 파일 입출력 다루기 : 텍스트 형식으로 데이터 입출력(계속)
+    - 리팩토링 : Task 도메인 클래스에 CsvValue 인터페이스 적용
+    - JSON 형식으로 데이터를 입출력하기
+
+## 59일차(2021-09-17,금)
+
+- 실전 프로젝트(eomcs-java-project)
+  - 17-a. 메뉴 리팩토링: 상세보기에서 변경, 삭제 기능 수행하기
+  - 17-b. 메뉴 리팩토링: Command 인터페이스의 execute()에 파라미터 넘기기
+  - 17-c. 메뉴 리팩토링: Command 객체 간에 종속성 제거하기
+- 반 배치
+  - A반
+    - 김태호,조주리,신현지,김진현
+    - 최보균,이혜연,방우주,이서은,조대희
+    - 김은채,송다혜,조솔,우형민
+  - B반
+    - 반계령,하선영,김제이,김주창
+    - 변민성,위정욱,박성준,구백연,이지호
+    - 윤수민,이용진,홍지현,문세철
