@@ -32,12 +32,13 @@ public class BoardDetailHandler extends AbstractBoardHandler {
     System.out.printf("조회수: %d\n", board.getViewCount());
     System.out.println();
 
-    Member loginUser = AuthLoginHandler.getLoginUser();
-    if (loginUser == null || board.getWriter().getNo() != loginUser.getNo()) {
+    Member loginUser = AuthLoginHandler.getLoginUser(); 
+    if (loginUser == null || 
+        (board.getWriter().getNo() != loginUser.getNo() && !loginUser.getEmail().equals("root@test.com"))) {
       return;
     }
 
-    // BoardUpdateHandler 나 BoardDeleteHandler를 실행할 때 게시글 번호를 사용할 수 있도록
+    // BoardUpdateHandler나 BoardDeleteHandler를 실행할 때 게시글 번호를 사용할 수 있도록 
     // CommandRequest에 보관한다.
     request.setAttribute("no", no);
 
@@ -53,7 +54,6 @@ public class BoardDetailHandler extends AbstractBoardHandler {
           request.getRequestDispatcher("/board/delete").forward(request);
           return;
         case "0":
-          // 이전 메뉴로 나가기
           return;
         default:
           System.out.println("명령어가 올바르지 않습니다!");

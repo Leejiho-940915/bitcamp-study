@@ -30,10 +30,10 @@ public class AuthLoginHandler implements Command {
     String email = Prompt.inputString("이메일? ");
     String password = Prompt.inputString("암호? ");
 
-    if (email.equals("root") && password.equals("0000")) {
+    if (email.equals("root@test.com") && password.equals("0000")) {
       Member root = new Member();
       root.setName("관리자");
-      root.setEmail("admin@test.com");
+      root.setEmail("root@test.com");
       loginUser = root;
       userAccessLevel = Menu.ACCESS_ADMIN | Menu.ACCESS_GENERAL;
       return;

@@ -60,7 +60,6 @@ public class App {
 
   HashMap<String,Command> commandMap = new HashMap<>();
 
-
   MemberPrompt memberPrompt = new MemberPrompt(memberList);
   ProjectPrompt projectPrompt = new ProjectPrompt(projectList);
 
@@ -90,16 +89,11 @@ public class App {
   }
 
   public static void main(String[] args) {
-
-
-
-
     App app = new App(); 
     app.service();
   }
 
   public App() {
-
 
     commandMap.put("/board/add", new BoardAddHandler(boardList));
     commandMap.put("/board/list", new BoardListHandler(boardList));
@@ -142,28 +136,26 @@ public class App {
     saveObjects("board.json", boardList);
     saveObjects("member.json", memberList);
     saveObjects("project.json", projectList);
-
   }
 
   // JSON 형식으로 저장된 데이터를 읽어서 객체로 만든다.
   private <E> void loadObjects(
-      String filepath, // 데이터를 읽어 올 파일 경오
-      List<E> list, // 로딩한 데이터를 객체로 만든 후 저장할 목록
+      String filepath, // 데이터를 읽어 올 파일 경로 
+      List<E> list, // 로딩한 데이터를 객체로 만든 후 저장할 목록 
       Class<E> domainType // 생성할 객체의 타입정보
       ) {
 
-    // CSV 형식으로 저장된 게시글 데이터를 파일에서 읽어 객체에 담는다.
     try (BufferedReader in = new BufferedReader(
         new FileReader(filepath, Charset.forName("UTF-8")))) {
 
       StringBuilder strBuilder = new StringBuilder();
       String str;
-      while((str = in.readLine()) != null) { // 파일 전체를 읽는다.
+      while ((str = in.readLine()) != null) { // 파일 전체를 읽는다.
         strBuilder.append(str);
       }
 
       // StringBuilder로 읽어 온 JSON 문자열을 객체로 바꾼다.
-      Type type = TypeToken.getParameterized(Collection.class, domainType).getType();
+      Type type = TypeToken.getParameterized(Collection.class, domainType).getType(); 
       Collection<E> collection = new Gson().fromJson(strBuilder.toString(), type);
 
       // JSON 데이터로 읽어온 목록을 파라미터로 받은 List 에 저장한다.
@@ -225,8 +217,8 @@ public class App {
     memberMenu.add(new MenuItem("등록", ACCESS_GENERAL, "/member/add"));
     memberMenu.add(new MenuItem("목록", "/member/list"));
     memberMenu.add(new MenuItem("상세보기", "/member/detail"));
-    memberMenu.add(new MenuItem("변경", ACCESS_GENERAL, "/member/update"));
-    memberMenu.add(new MenuItem("삭제", ACCESS_GENERAL, "/member/delete"));
+    //    memberMenu.add(new MenuItem("변경", ACCESS_GENERAL, "/member/update"));
+    //    memberMenu.add(new MenuItem("삭제", ACCESS_GENERAL, "/member/delete"));
     return memberMenu;
   }
 
@@ -235,8 +227,8 @@ public class App {
     projectMenu.add(new MenuItem("등록", ACCESS_GENERAL, "/project/add"));
     projectMenu.add(new MenuItem("목록", "/project/list"));
     projectMenu.add(new MenuItem("상세보기", "/project/detail"));
-    projectMenu.add(new MenuItem("변경", ACCESS_GENERAL, "/project/update"));
-    projectMenu.add(new MenuItem("삭제", ACCESS_GENERAL, "/project/delete"));
+    //    projectMenu.add(new MenuItem("변경", ACCESS_GENERAL, "/project/update"));
+    //    projectMenu.add(new MenuItem("삭제", ACCESS_GENERAL, "/project/delete"));
     return projectMenu;
   }
 
@@ -245,8 +237,8 @@ public class App {
     taskMenu.add(new MenuItem("등록", ACCESS_GENERAL, "/task/add"));
     taskMenu.add(new MenuItem("목록", "/task/list"));
     taskMenu.add(new MenuItem("상세보기", "/task/detail"));
-    taskMenu.add(new MenuItem("변경", ACCESS_GENERAL, "/task/update"));
-    taskMenu.add(new MenuItem("삭제", ACCESS_GENERAL, "/task/delete"));
+    //    taskMenu.add(new MenuItem("변경", ACCESS_GENERAL, "/task/update"));
+    //    taskMenu.add(new MenuItem("삭제", ACCESS_GENERAL, "/task/delete"));
     return taskMenu;
   }
 

@@ -55,7 +55,7 @@ public class Board implements CsvValue {
   }
 
   public static Board valueOfCsv(String csv) {
-    // 1) 한 줄의 문자열을 콤바(,)로 분리한다.
+    // 1) 한 줄의 문자열을 콤마(,)로 분리한다.
     String[] values = csv.split(",");
 
     // 2) 콤마로 분리한 값을 Board 객체에 담는다.
@@ -67,12 +67,12 @@ public class Board implements CsvValue {
     b.setViewCount(Integer.valueOf(values[4]));
     b.setLike(Integer.valueOf(values[5]));
 
-    // 3)
+    // 3) 게시글을 작성한 회원 정보를 Member 객체에 담는다.
     Member m = new Member();
     m.setNo(Integer.valueOf(values[6]));
     m.setName(values[7]);
 
-    // 4)
+    // 4) Member 객체를 Board 객체의 작성자 필드에 저장한다.
     b.setWriter(m);
 
     return b;

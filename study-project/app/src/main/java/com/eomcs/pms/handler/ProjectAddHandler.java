@@ -11,7 +11,6 @@ public class ProjectAddHandler extends AbstractProjectHandler {
   public ProjectAddHandler(List<Project> projectList, MemberPrompt memberPrompt) {
     super(projectList);
     this.memberPrompt = memberPrompt;
-
   }
 
   @Override

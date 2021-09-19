@@ -13,7 +13,7 @@ public class MemberUpdateHandler extends AbstractMemberHandler {
   @Override
   public void execute(CommandRequest request) {
     System.out.println("[회원 변경]");
-    int no = Prompt.inputInt("번호? ");
+    int no = (int) request.getAttribute("no");
 
     Member member = findByNo(no);
 

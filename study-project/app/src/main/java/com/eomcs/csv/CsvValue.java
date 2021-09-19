@@ -7,5 +7,5 @@ public interface CsvValue {
   String toCsvString();
 
   // 파라미터로 받은 CSV 문자열을 분석하여 객체의 필드에 그 값을 저장한다.
-  void loadCsv(String csv);
+  void loadCsv(String csv); 
 }

@@ -23,7 +23,7 @@ public class Project implements CsvValue {
         + ", tasks=" + tasks + "]";
   }
 
-  //다음 메서드는 CsvValue 규칙에 따라 정의한 메서드다.
+  // 다음 메서드는 CsvValue 규칙에 따라 정의한 메서드다.
   @Override
   public String toCsvString() {
     // 프로젝트 정보를 CSV로 출력할 때 멤버 정보와 작업 정보를 포함한다.
@@ -39,10 +39,9 @@ public class Project implements CsvValue {
         this.getOwner().getNo(),
         this.getOwner().getName()));
 
-
     // 2) 프로젝트 멤버 정보를 저장한다.
     // => 프로젝트 멤버의 수를 저장한다.
-    strBuilder.append(String.format("%d,", this.getMembers().size())); 
+    strBuilder.append(String.format("%d,", this.getMembers().size()));
 
     // => 프로젝트 멤버들의 정보를 저장한다.
     for (Member m : this.getMembers()) {
@@ -62,7 +61,7 @@ public class Project implements CsvValue {
   }
 
   // 다음 메서드는 파라미터로 받은 CSV 문자열에서 값을 추출하여 
-  // Member 객체의 각 필드에 저장한다.
+  // Board 객체의 각 필드에 저장한다.
   @Override
   public void loadCsv(String csv) {
     String[] values = csv.split(",");
@@ -82,7 +81,7 @@ public class Project implements CsvValue {
     this.setOwner(owner);
 
     // 3) 프로젝트 멤버 정보 로딩
-    // => 프로젝트 멤버가 몇 명인지 읽어 온다.
+    // => 프로젝트 멤버가 몇 명인지 읽어 온다. 
     int memberSize = Integer.valueOf(values[7]);
 
     int lastIndex = 0;
@@ -92,7 +91,7 @@ public class Project implements CsvValue {
       m.setNo(Integer.valueOf(values[offset]));
       m.setName(values[offset + 1]);
 
-      // => 프로젝트 멤버에 추가한다.
+      // => 프로젝트에 멤버를 추가한다.
       this.getMembers().add(m);
 
       // => 작업 데이터를 읽을 때 사용할 마지막 인덱스 번호를 저장해 둔다.
@@ -100,16 +99,14 @@ public class Project implements CsvValue {
     }
 
     // 4) 작업 로딩
-    // => 작업의 개수를 읽어 온다.
+    // => 작업의 개수를 읽어 온다. 
     int taskSize = Integer.valueOf(values[lastIndex + 1]);
 
     for (int i = 0, offset = lastIndex + 2; i < taskSize; i++, offset += 6) {
       // => 파일에서 작업 데이터를 로딩한다.
       Task t = new Task();
-
       t.loadCsv(String.join(",", Arrays.copyOfRange(values, offset, offset + 6)));
-
-      //      t.loadCsv(String.format("%s,%s,%s,%d,%s,%s", 
+      //      t.loadCsv(String.format("%s,%s,%s,%s,%s,%s", 
       //          values[offset],
       //          values[offset + 1],
       //          values[offset + 2],
@@ -118,10 +115,10 @@ public class Project implements CsvValue {
       //          values[offset + 5]
       //          ));
 
-
-      // => 프로젝트 멤버에 추가한다.
+      // => 프로젝트에 작업을 추가한다.
       this.getTasks().add(t);
     }
+
   }
 
   public int getNo() {

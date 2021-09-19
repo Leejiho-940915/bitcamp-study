@@ -9,7 +9,6 @@ public class MemberAddHandler extends AbstractMemberHandler {
 
   public MemberAddHandler(List<Member> memberList) {
     super(memberList);
-
   }
 
   @Override

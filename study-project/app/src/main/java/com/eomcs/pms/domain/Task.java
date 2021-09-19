@@ -17,7 +17,7 @@ public class Task implements CsvValue {
         + ", status=" + status + ", project=" + project + "]";
   }
 
-  //다음 메서드는 CsvValue 규칙에 따라 정의한 메서드다.
+  // 다음 메서드는 CsvValue 규칙에 따라 정의한 메서드다.
   @Override
   public String toCsvString() {
     return String.format("%d,%s,%s,%d,%d,%s",

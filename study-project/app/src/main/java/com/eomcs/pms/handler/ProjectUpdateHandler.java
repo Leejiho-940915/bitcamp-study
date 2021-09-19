@@ -18,7 +18,7 @@ public class ProjectUpdateHandler extends AbstractProjectHandler {
   @Override
   public void execute(CommandRequest request) {
     System.out.println("[프로젝트 변경]");
-    int no = Prompt.inputInt("번호? ");
+    int no = (int) request.getAttribute("no");
 
     Project project = findByNo(no);
 
