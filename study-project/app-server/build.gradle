@@ -12,7 +12,7 @@ plugins {
 
 eclipse {
     project{
-        name = "study-project"
+        name = "study-project-server"
     }
 }
 
