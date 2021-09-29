@@ -17,7 +17,6 @@ public class Response {
     this.value = value;
   }
 
-
   public String getStatus() {
     return status;
   }
@@ -30,6 +29,4 @@ public class Response {
   public void setValue(Object value) {
     this.value = value;
   }
-
-
 }

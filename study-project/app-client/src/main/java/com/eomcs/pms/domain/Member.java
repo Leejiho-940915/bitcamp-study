@@ -17,7 +17,6 @@ public class Member {
         + ", photo=" + photo + ", tel=" + tel + ", registeredDate=" + registeredDate + "]";
   }
 
-
   public int getNo() {
     return no;
   }

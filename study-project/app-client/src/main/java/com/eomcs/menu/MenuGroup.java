@@ -132,7 +132,7 @@ public class MenuGroup extends Menu {
         // 메뉴 필터가 있을 때, 그 메뉴 필터에서 승인하지 않는다면
         // 출력할 메뉴에 포함시키지 않는다.
         continue;
-      } 
+      }
       menuList.add(menu);
       // 사용자가 해당 메뉴에 접근 할 수 있는지 검사한다.
       //    예) 메뉴의 접근 범위:   0100  = 관리자만 접근 가능   
@@ -167,7 +167,7 @@ public class MenuGroup extends Menu {
     }
 
     if (menuNo == 0 && !disablePrevMenu) {
-      return prevMenu; // 호출한 쪽에 '이전 메뉴' 선택을 알리게 위해 
+      return prevMenu; // 호출한 쪽에 '이전 메뉴' 선택을 알리기 위해 
     } 
 
     return menuList.get(menuNo - 1);

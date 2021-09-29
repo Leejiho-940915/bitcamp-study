@@ -25,7 +25,7 @@ public class RequestAgent implements AutoCloseable {
   String jsonData;
 
   public RequestAgent(String ip, int port) throws Exception {
-    socket = new Socket(ip, port);
+    socket = new Socket(ip, port);  
     out = new PrintWriter(socket.getOutputStream());
     in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
   }
@@ -70,24 +70,6 @@ public class RequestAgent implements AutoCloseable {
     try {socket.close();} catch (Exception e) {}
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
