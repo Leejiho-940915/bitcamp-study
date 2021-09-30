@@ -25,7 +25,19 @@ import com.eomcs.pms.handler.MemberAddHandler;
 import com.eomcs.pms.handler.MemberDeleteHandler;
 import com.eomcs.pms.handler.MemberDetailHandler;
 import com.eomcs.pms.handler.MemberListHandler;
+import com.eomcs.pms.handler.MemberPrompt;
 import com.eomcs.pms.handler.MemberUpdateHandler;
+import com.eomcs.pms.handler.ProjectAddHandler;
+import com.eomcs.pms.handler.ProjectDeleteHandler;
+import com.eomcs.pms.handler.ProjectDetailHandler;
+import com.eomcs.pms.handler.ProjectListHandler;
+import com.eomcs.pms.handler.ProjectPrompt;
+import com.eomcs.pms.handler.ProjectUpdateHandler;
+import com.eomcs.pms.handler.TaskAddHandler;
+import com.eomcs.pms.handler.TaskDeleteHandler;
+import com.eomcs.pms.handler.TaskDetailHandler;
+import com.eomcs.pms.handler.TaskListHandler;
+import com.eomcs.pms.handler.TaskUpdateHandler;
 import com.eomcs.pms.listener.AppInitListener;
 import com.eomcs.request.RequestAgent;
 import com.eomcs.util.Prompt;
@@ -108,16 +120,28 @@ public class ClientApp {
     commandMap.put("/board/delete", new BoardDeleteHandler(requestAgent));
     commandMap.put("/board/search", new BoardSearchHandler(requestAgent));
 
-
     commandMap.put("/auth/login", new AuthLoginHandler(requestAgent));
     commandMap.put("/auth/logout", new AuthLogoutHandler());
     commandMap.put("/auth/userinfo", new AuthUserInfoHandler());
+
+    MemberPrompt memberPrompt = new MemberPrompt(requestAgent);
+
+    commandMap.put("/project/add", new ProjectAddHandler(requestAgent, memberPrompt));
+    commandMap.put("/project/list", new ProjectListHandler(requestAgent));
+    commandMap.put("/project/detail", new ProjectDetailHandler(requestAgent));
+    commandMap.put("/project/update", new ProjectUpdateHandler(requestAgent, memberPrompt));
+    commandMap.put("/project/delete", new ProjectDeleteHandler(requestAgent));
+
+    ProjectPrompt projectPrompt = new ProjectPrompt(requestAgent);
+    commandMap.put("/task/add", new TaskAddHandler(requestAgent, projectPrompt));
+    commandMap.put("/task/list", new TaskListHandler(projectPrompt));
+    commandMap.put("/task/detail", new TaskDetailHandler(projectPrompt));
+    commandMap.put("/task/update", new TaskUpdateHandler(requestAgent, projectPrompt));
+    commandMap.put("/task/delete", new TaskDeleteHandler(requestAgent, projectPrompt));
   }
 
   // MenuGroup에서 사용할 필터를 정의한다.
-
   MenuFilter menuFilter = menu -> (menu.getAccessScope() & AuthLoginHandler.getUserAccessLevel()) > 0;
-
 
 
   Menu createMainMenu() {
@@ -191,10 +215,6 @@ public class ClientApp {
     notifyOnApplicationStarted();
 
     createMainMenu().execute();
-
-    // 프로그램의 실행을 끝내면, 서버와의 연결을 끊는다.
-    requestAgent.request("quit", null);
-    //    System.out.println(requestAgent.getObject(String.class));
 
     Prompt.close();
 

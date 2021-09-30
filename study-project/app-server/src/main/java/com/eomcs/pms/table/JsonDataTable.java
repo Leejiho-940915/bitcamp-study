@@ -43,8 +43,6 @@ public abstract class JsonDataTable<T> {
         strBuilder.append(str);
       }
 
-
-
       Type type = TypeToken.getParameterized(Collection.class, elementType).getType(); 
       Collection<T> collection = new Gson().fromJson(strBuilder.toString(), type);
       list.addAll(collection);

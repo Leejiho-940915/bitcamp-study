@@ -14,7 +14,6 @@ public class AuthLoginHandler implements Command {
   static int userAccessLevel = Menu.ACCESS_LOGOUT; // 기본은 로그아웃 된 상태이다.
 
   public static Member getLoginUser() {
-
     return loginUser;
   }
   public static int getUserAccessLevel() {
@@ -46,7 +45,6 @@ public class AuthLoginHandler implements Command {
     params.put("password", password);
 
     requestAgent.request("member.selectOneByEmailPassword", params);
-
 
     if (requestAgent.getStatus().equals(RequestAgent.SUCCESS)) {
       Member member = requestAgent.getObject(Member.class);
