@@ -62,6 +62,7 @@ public class BoardTable extends JsonDataTable<Board> implements DataProcessor {
     int no = Integer.parseInt(request.getParameter("no"));
     Board b = findByNo(no);
 
+
     if (b != null) {
       response.setStatus(Response.SUCCESS);
       response.setValue(b);
