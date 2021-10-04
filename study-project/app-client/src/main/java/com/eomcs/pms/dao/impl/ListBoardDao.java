@@ -14,7 +14,6 @@ public class ListBoardDao implements BoardDao {
   @Override
   public void insert(Board board) throws Exception {
     list.add(board);
-
   }
 
   @Override
@@ -26,8 +25,8 @@ public class ListBoardDao implements BoardDao {
   public List<Board> findByKeyword(String keyword) throws Exception {
     ArrayList<Board> result = new ArrayList<>();
     for (Board b : list) {
-      if (b.getTitle().equals(keyword) ||
-          b.getContent().equals(keyword) ||
+      if (b.getTitle().equalsIgnoreCase(keyword) ||
+          b.getContent().equalsIgnoreCase(keyword) ||
           b.getWriter().getName().equalsIgnoreCase(keyword)) {
         result.add(b);
       }
@@ -64,6 +63,7 @@ public class ListBoardDao implements BoardDao {
       }
     }
   }
-
-
 }
+
+
+

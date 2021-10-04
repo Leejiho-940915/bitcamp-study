@@ -12,5 +12,4 @@ public interface BoardDao {
   Board findByNo(int no) throws Exception;
   void update(Board board) throws Exception;
   void delete(int no) throws Exception;
-
 }

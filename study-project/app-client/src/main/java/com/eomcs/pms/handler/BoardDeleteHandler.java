@@ -17,7 +17,6 @@ public class BoardDeleteHandler implements Command {
     System.out.println("[게시글 삭제]");
     int no = (int) request.getAttribute("no");
 
-
     Board board = boardDao.findByNo(no);
 
     if (board == null) {

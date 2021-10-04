@@ -8,15 +8,15 @@ import com.eomcs.pms.domain.Board;
 import com.eomcs.request.RequestAgent;
 
 // 역할
-// - 게시글 데이터를 서버를 통해 관리한다.
+// - 게시글을 데이터를 서버를 통해 관리한다.
 //
 public class NetBoardDao implements BoardDao {
+
   RequestAgent requestAgent;
 
   public NetBoardDao(RequestAgent requestAgent) {
     this.requestAgent = requestAgent;
   }
-
 
   @Override
   public void insert(Board board) throws Exception {
@@ -24,28 +24,26 @@ public class NetBoardDao implements BoardDao {
     if (requestAgent.getStatus().equals(RequestAgent.FAIL)) {
       throw new Exception("게시글 데이터 저장 실패!");
     }
-
   }
 
   @Override
   public List<Board> findAll() throws Exception {
     requestAgent.request("board.selectList", null);
     if (requestAgent.getStatus().equals(RequestAgent.FAIL)) {
-      throw new Exception("게시글 데이터 저장 실패!");
+      throw new Exception("게시글 목록 조회 실패!");
     }
 
-    return new ArrayList<Board>(requestAgent.getObjects(Board.class));
-
+    return new ArrayList<>(requestAgent.getObjects(Board.class));
   }
 
   @Override
   public List<Board> findByKeyword(String keyword) throws Exception {
     HashMap<String,String> params = new HashMap<>();
     params.put("keyword", keyword);
-    requestAgent.request("board.selectList", null);
+    requestAgent.request("board.selectListByKeyword", params);
 
     if (requestAgent.getStatus().equals(RequestAgent.FAIL)) {
-      throw new Exception("게시글 데이터 저장 실패!");
+      throw new Exception("게시글 검색 실패!");
     }
 
     return new ArrayList<>(requestAgent.getObjects(Board.class));
@@ -85,6 +83,7 @@ public class NetBoardDao implements BoardDao {
       throw new Exception("게시글 삭제 실패!");
     }
   }
-
-
 }
+
+
+
