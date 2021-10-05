@@ -6,10 +6,7 @@ import com.google.gson.Gson;
 public class Exam0220 {
   public static void main(String[] args) {
 
-    // 1) JSON 문자열 준비
-    String jsonStr = "[{\"no\":101,\"name\":\"홍길동\"},{\"no\":102,\"name\":\"임꺽정\"},{\"no\":103,\"name\":\"안창호\"}]\r\n"
-        + "";
-
+    String jsonStr = "[{\"no\":101,\"name\":\"홍길동\"},{\"no\":102,\"name\":\"임꺽정\"},{\"no\":103,\"name\":\"안창호\"}]";
 
     Member[] members = new Gson().fromJson(jsonStr, Member[].class);
 
@@ -18,3 +15,8 @@ public class Exam0220 {
     }
   }
 }
+
+
+
+
+

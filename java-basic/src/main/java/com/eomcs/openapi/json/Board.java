@@ -18,7 +18,6 @@ public class Board {
         + "]";
   }
 
-
   public int getNo() {
     return no;
   }

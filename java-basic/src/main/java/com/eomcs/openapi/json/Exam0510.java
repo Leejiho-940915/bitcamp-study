@@ -1,4 +1,4 @@
-// 객체 --> JSON문자열 : 다른 객체를 목록으로 포함하는 경우
+// 객체 --> JSON 문자열 : 다른 객체를 목록으로 포함하는 경우
 package com.eomcs.openapi.json;
 
 import java.sql.Date;
@@ -28,7 +28,6 @@ public class Exam0510 {
     m3.setRegisteredDate(new Date(System.currentTimeMillis()));
 
     ArrayList<Member> members = new ArrayList<>();
-
     members.add(m1);
     members.add(m2);
     members.add(m3);
@@ -42,9 +41,17 @@ public class Exam0510 {
     p.setOwner(m2);
     p.setMembers(members);
 
-
     String jsonStr = new Gson().toJson(p);
 
     System.out.println(jsonStr);
   }
 }
+
+// 다른 객체를 목록으로 포함했을 때 JSON 형식
+// {
+//    프로퍼티명 : 값,
+//    프로퍼티명 : {프로퍼티명:값,프로퍼티명:값,...},
+//    프로퍼티명 : [{...},{...},{...},...],
+//    ...
+// }
+//

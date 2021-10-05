@@ -1,4 +1,4 @@
-// 객체 --> JSON문자열 : 배열 다루기
+// 객체 --> JSON 문자열 : 배열 다루기
 package com.eomcs.openapi.json;
 
 import java.sql.Date;
@@ -30,7 +30,19 @@ public class Exam0210 {
 
     String jsonStr = new Gson().toJson(members);
 
-
     System.out.println(jsonStr);
   }
 }
+
+// JSON 배열 형식 - [{ 객체 정보 },{ 객체 정보}, ...]
+// => [
+//      {"프로퍼티명":값,"프로퍼티명":값, ...}, 
+//      {"프로퍼티명":값,"프로퍼티명":값, ...},
+//      {"프로퍼티명":값,"프로퍼티명":값, ...},
+//      ...
+//    ]
+//
+
+
+
+

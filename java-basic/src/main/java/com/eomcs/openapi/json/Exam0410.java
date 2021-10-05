@@ -1,4 +1,4 @@
-// 객체 --> JSON문자열 : 다른 객체를 포함하는 경우
+// 객체 --> JSON 문자열 : 다른 객체를 포함하는 경우
 package com.eomcs.openapi.json;
 
 import java.sql.Date;
@@ -14,7 +14,7 @@ public class Exam0410 {
     m.setEmail("hong@test.com");
     m.setPassword("1111");
     m.setPhoto("hong.gif");
-    m.setTel("010-2222-2222");
+    m.setTel("010-2222-1111");
     m.setRegisteredDate(new Date(System.currentTimeMillis()));
 
     Board b = new Board();
@@ -31,3 +31,11 @@ public class Exam0410 {
     System.out.println(jsonStr);
   }
 }
+
+// 다른 객체를 포함했을 때 JSON 형식
+// {
+//    프로퍼티명 : 값,
+//    프로퍼티명 : {프로퍼티명:값,프로퍼티명:값,...},
+//    ...
+// }
+//
