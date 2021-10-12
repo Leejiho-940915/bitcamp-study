@@ -1,5 +1,5 @@
 // 게시물 관리 - 조회 + PreparedStatement 적용
-package com.eomcs.jdbc.ex2;
+package com.eomcs.jdbc.ex3;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +17,7 @@ public class Exam0330 {
     }
 
     try (Connection con = DriverManager.getConnection( //
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mysql://localhost:3307/studydb?user=study&password=1111");
         PreparedStatement stmt = con.prepareStatement( //
             "select * from x_board where board_id = ?")) {
 

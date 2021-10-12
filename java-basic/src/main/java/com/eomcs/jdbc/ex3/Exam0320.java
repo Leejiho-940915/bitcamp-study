@@ -1,5 +1,5 @@
 // 게시물 관리 - 목록 + PreparedStatement
-package com.eomcs.jdbc.ex2;
+package com.eomcs.jdbc.ex3;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ public class Exam0320 {
 
   public static void main(String[] args) throws Exception {
     try (Connection con = DriverManager.getConnection( //
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mysql://localhost:3307/studydb?user=study&password=1111");
         // 당장 select 할 때 파라미터 값을 넣지 않는다 하더라도,
         // 나중에 넣을 것을 대비해서 그냥 PreparedStatement를 사용하라!
         PreparedStatement stmt = con.prepareStatement( //

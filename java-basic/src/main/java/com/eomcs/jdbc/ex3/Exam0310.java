@@ -1,5 +1,5 @@
 // 게시판 관리 - 등록 + PreparedStatement 사용
-package com.eomcs.jdbc.ex2;
+package com.eomcs.jdbc.ex3;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,7 +31,7 @@ public class Exam0310 {
     }
 
     try (Connection con = DriverManager.getConnection( //
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mysql://localhost:3307/studydb?user=study&password=1111");
 
         // 값이 들어갈 자리에 in-parameter(?)를 지정한다.
         // => 데이터 타입에 상관없이 ?를 넣는다.
