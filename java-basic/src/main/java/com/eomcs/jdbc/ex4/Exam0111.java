@@ -1,5 +1,5 @@
 // insert 한 후 auto increment PK 값 리턴 받기
-package com.eomcs.jdbc.ex3;
+package com.eomcs.jdbc.ex4;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Exam0411 {
+public class Exam0111 {
 
   public static void main(String[] args) throws Exception {
     String title = null;
@@ -25,7 +25,7 @@ public class Exam0411 {
     }
 
     try (Connection con = DriverManager.getConnection( 
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mysql://localhost:3307/studydb?user=study&password=1111");
 
         // 입력 후 PK 값을 리턴 받고 싶다면,
         // PreparedStatement 객체를 얻을 때 다음과 같은 옵션을 지정하라!
@@ -46,9 +46,10 @@ public class Exam0411 {
         // 따라서 ResultSet에 대해 여러 번 반복을 할 필요가 없다.
         rs.next();
 
-        // 자동 생성된 PK 값을 꺼낼 때는 따로 컬럼 이름이 없기 때문에 컬럼 인덱스로 꺼낸다.
-        int no = rs.getInt(1);
-        System.out.printf("입력된 게시글 번호: %d\n", no);
+        // 자동 생성된 PK 값을 꺼낼 때는 컬럼 이름이나 PK 컬럼의 인덱스로 꺼낸다.
+        int no = rs.getInt("board_id");
+        int no2 = rs.getInt(1);
+        System.out.printf("입력된 게시글 번호: %d, %d\n", no, no2);
       }
     }
   }

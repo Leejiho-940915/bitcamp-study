@@ -1,5 +1,5 @@
 // auto commit 의 문제점
-package com.eomcs.jdbc.ex3;
+package com.eomcs.jdbc.ex4;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Exam0510 {
+public class Exam0210 {
 
   public static void main(String[] args) throws Exception {
     String title = null;
@@ -35,7 +35,7 @@ public class Exam0510 {
     }
 
     try (Connection con = DriverManager.getConnection( //
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mysql://localhost:3307/studydb?user=study&password=1111");
 
         // => 게시글을 입력할 때 자동 생성된 PK 값을 받겠다고 설정한다.
         PreparedStatement boardStmt = con.prepareStatement(
