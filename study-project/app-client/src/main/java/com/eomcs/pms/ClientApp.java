@@ -15,9 +15,9 @@ import com.eomcs.menu.MenuGroup;
 import com.eomcs.pms.dao.BoardDao;
 import com.eomcs.pms.dao.MemberDao;
 import com.eomcs.pms.dao.ProjectDao;
+import com.eomcs.pms.dao.impl.MariadbBoardDao;
 import com.eomcs.pms.dao.impl.MariadbMemberDao;
 import com.eomcs.pms.dao.impl.MariadbProjectDao;
-import com.eomcs.pms.dao.impl.NetBoardDao;
 import com.eomcs.pms.handler.AuthLoginHandler;
 import com.eomcs.pms.handler.AuthLogoutHandler;
 import com.eomcs.pms.handler.AuthUserInfoHandler;
@@ -122,7 +122,7 @@ public class ClientApp {
 
 
     // 데이터 관리를 담당할 DAO 객체를 준비한다.
-    BoardDao boardDao = new NetBoardDao(requestAgent);
+    BoardDao boardDao = new MariadbBoardDao(con);
     MemberDao memberDao = new MariadbMemberDao(con);
     ProjectDao projectDao = new MariadbProjectDao(con);
 
