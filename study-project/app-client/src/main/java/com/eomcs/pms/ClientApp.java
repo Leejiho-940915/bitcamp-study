@@ -3,8 +3,6 @@ package com.eomcs.pms;
 import static com.eomcs.menu.Menu.ACCESS_ADMIN;
 import static com.eomcs.menu.Menu.ACCESS_GENERAL;
 import static com.eomcs.menu.Menu.ACCESS_LOGOUT;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +17,10 @@ import com.eomcs.pms.dao.BoardDao;
 import com.eomcs.pms.dao.MemberDao;
 import com.eomcs.pms.dao.ProjectDao;
 import com.eomcs.pms.dao.TaskDao;
-import com.eomcs.pms.dao.impl.MariadbBoardDao;
-import com.eomcs.pms.dao.impl.MariadbProjectDao;
-import com.eomcs.pms.dao.impl.MariadbTaskDao;
+import com.eomcs.pms.dao.impl.MybatisBoardDao;
 import com.eomcs.pms.dao.impl.MybatisMemberDao;
+import com.eomcs.pms.dao.impl.MybatisProjectDao;
+import com.eomcs.pms.dao.impl.MybatisTaskDao;
 import com.eomcs.pms.handler.AuthLoginHandler;
 import com.eomcs.pms.handler.AuthLogoutHandler;
 import com.eomcs.pms.handler.AuthUserInfoHandler;
@@ -57,7 +55,7 @@ import com.eomcs.util.Prompt;
 
 public class ClientApp {
 
-  Connection con;
+  SqlSession sqlSession;
 
   RequestAgent requestAgent;
 
@@ -121,19 +119,15 @@ public class ClientApp {
     // 서버와 통신을 담당할 객체 준비
     requestAgent = null;
 
-    // DBMS와 연결한다.
-    con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
-
     // Mybatis 의 SqlSession 객체 준비
-    SqlSession sqlSession = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(
+    sqlSession = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(
         "com/eomcs/pms/conf/mybatis-config.xml")).openSession();
 
     // 데이터 관리를 담당할 DAO 객체를 준비한다.
-    BoardDao boardDao = new MariadbBoardDao(con);
+    BoardDao boardDao = new MybatisBoardDao(sqlSession);
     MemberDao memberDao = new MybatisMemberDao(sqlSession);
-    ProjectDao projectDao = new MariadbProjectDao(con);
-    TaskDao taskDao = new MariadbTaskDao(con);
+    ProjectDao projectDao = new MybatisProjectDao(sqlSession);
+    TaskDao taskDao = new MybatisTaskDao(sqlSession);
 
     // Command 객체 준비
     commandMap.put("/member/add", new MemberAddHandler(memberDao));
@@ -247,8 +241,8 @@ public class ClientApp {
 
     notifyOnApplicationEnded();
 
-    // DBMS와 연결을 끊는다.
-    con.close();
+    // SqlSession 객체의 자원을 헤제한다.
+    sqlSession.close();
   }
 
   public static void main(String[] args) throws Exception {
