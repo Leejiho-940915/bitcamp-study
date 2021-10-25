@@ -1,19 +1,20 @@
 // Gradle 도구에 추가할 작업이 있으면 플러그인을 장착하라!
 plugins {
-  //  id 'java' // 자바 애플리케이션 빌드 관련 작업들을 추가한다.
-  id 'application' // 'java' 플러그인 +애플리케이션 관련작업
-  id 'eclipse'
-  id 'java'
-   //이클립스 IDE 관련 작업
-  // eclipseProject : .project 파일 생성
-  // eclipseClasspath : .classpath 파일 생성
-  // eclipse : =eclipseProject + eclipseClasspath 
+  id 'java' 
+  id 'eclipse-wtp' // 이클립스 IDE 용 웹 프로젝트 관련 파일을 만들 때 사용할 도구가 들어 있는 플러그인 장착
+  id 'war' // 웹 애플리케이션의 배포 파일을 만들 때 사용할 도구가 들어있는 플러그인 장착
 }
 
 eclipse {
     project{
         name = "study-project-server"
     }
+}
+
+// 서블릿 컨테이너에 배치할 때 사용할 웹 애플리케이션 이름을 설정한다.
+// 이 이름은 .war 배치 파일을 만들 때도 사용한다.
+war {
+    archiveBaseName = "pms"
 }
 
 // 자바 소스를 컴파일 할 때 적용할 옵션
@@ -36,12 +37,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.8'
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.google.guava:guava:30.1-jre'
+    
+    // 서블릿 API
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
 }
 
-// 'application' 플러그인에서 run 작업을 수행할 때 사용할
-// 클래스 이름을 지정한다.
-application {
-    mainClass = 'com.eomcs.pms.ServerApp'
-}
 
-// 
