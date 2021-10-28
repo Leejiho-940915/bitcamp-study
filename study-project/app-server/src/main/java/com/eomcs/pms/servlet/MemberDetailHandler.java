@@ -73,7 +73,7 @@ public class MemberDetailHandler extends GenericServlet {
     } catch (Exception e) {
       throw new ServletException(e);
     }
-
+    out.println("</form>");
     out.println("</body>");
     out.println("</html>");
   }
