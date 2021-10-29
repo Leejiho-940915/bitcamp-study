@@ -45,6 +45,9 @@ dependencies {
     
     // JSP API
     implementation 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+    
+    // JSTL 구현체
+    implementation 'javax.servlet:jstl:1.2'
 }
 
 

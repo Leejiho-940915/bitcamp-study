@@ -1,16 +1,15 @@
-<%@page import="com.eomcs.pms.domain.Member"%>
-<%@page import="java.util.Collection"%>
-<%@page import="com.eomcs.pms.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
   <title>회원목록</title>
 </head>
 <body>
-<h1>회원 목록</h1>
-<div><a href='MemberForm.jsp'>새회원</a></div>
+<h1>회원 목록(MVC + EL + JSTL)</h1>
+<div><a href='form'>새회원</a></div>
 <table border='1'>
 <thead>
   <tr>
@@ -22,31 +21,31 @@
   </tr>
 </thead>
 <tbody>
-<% // <== scriptlet (자바 코드 조각을 두는 태그)
-Collection<Member> memberList = memberDao.findAll();
 
-for (Member member : memberList) {
-%>
+<c:forEach items="${memberList}" var="member">
 <tr>
-	  <td><%=member.getNo()%></td> 
-	  <td><a href='MemberDetail.jsp?no=<%=member.getNo()%>'><%=member.getName()%></a></td> 
-	  <td><%=member.getEmail()%></td> 
-	  <td><%=member.getTel()%></td> 
-	  <td><%=member.getRegisteredDate()%></td>
+	  <td>${member.no}</td> 
+	  <td><a href='detail?no=${member.no}'>${member.name}</a></td> 
+	  <td>${member.email}</td> 
+	  <td>${member.tel}</td> 
+	  <td>${member.registeredDate}</td>
 </tr>
-<%} %>
+</c:forEach>
+
 </tbody>
 </table>
 </body>
 </html>
-<%! // <== declaration element(tag)
-// 자바 서블릿 클래스를 만들 때 그 클래스에 들어갈 변수와 메서드를 이 태그 안에 작성한다.
-    MemberDao memberDao;
 
-    public void jspInit() {
-      ServletConfig config = getServletConfig();
-      ServletContext 웹애플리케이션공용저장소 = config.getServletContext();
-      memberDao = (MemberDao) 웹애플리케이션공용저장소.getAttribute("memberDao");
-    }
-%>
+
+
+
+
+
+
+
+
+
+
+
     
