@@ -6,34 +6,47 @@
 <html>
 <head>
   <title>회원목록</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  
+  <script src="../node_modules/@popperjs/core/dist/umd/popper.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  
+  <style>
+    .container {
+      xborder: 1px solid red;
+      width: 640px;
+    }
+  </style>
 </head>
 <body>
-<h1>회원 목록(MVC + EL + JSTL)</h1>
-<div><a href='form'>새회원</a></div>
-<table border='1'>
-<thead>
-  <tr>
-    <th>번호</th>
-    <th>이름</th>
-    <th>이메일</th>
-    <th>전화</th>
-    <th>등록일</th>
-  </tr>
-</thead>
-<tbody>
-
-<c:forEach items="${memberList}" var="member">
-<tr>
-	  <td>${member.no}</td> 
-	  <td><a href='detail?no=${member.no}'>${member.name}</a></td> 
-	  <td>${member.email}</td> 
-	  <td>${member.tel}</td> 
-	  <td>${member.registeredDate}</td>
-</tr>
-</c:forEach>
-
-</tbody>
-</table>
+<div class="container">
+	<h1>회원 목록(MVC + EL + JSTL + Bootstrap)</h1>
+	<a href='form' class="btn btn-outline-dark btn-sm">새회원</a>
+	<table class="table table-hover">
+	<thead>
+	  <tr>
+	    <th>번호</th>
+	    <th>이름</th>
+	    <th>이메일</th>
+	    <th>전화</th>
+	    <th>등록일</th>
+	  </tr>
+	</thead>
+	<tbody>
+	
+	<c:forEach items="${memberList}" var="member">
+	<tr>
+		  <td>${member.no}</td> 
+		  <td><a href='detail?no=${member.no}'>${member.name}</a></td> 
+		  <td>${member.email}</td> 
+		  <td>${member.tel}</td> 
+		  <td>${member.registeredDate}</td>
+	</tr>
+	</c:forEach>
+	
+	</tbody>
+	</table>
+</div><!-- .container -->
 </body>
 </html>
 
