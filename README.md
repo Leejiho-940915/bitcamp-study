@@ -907,3 +907,101 @@
   - 팀별 프로젝트 구현
     - Mybatis 퍼시스턴스 프레임워크 적용
 
+
+## 79일차(2021-10-22,금)
+
+- DBMS(eomcs-java) : com.eomcs.mybatis (계속)
+  - Mybatis 퍼시스턴스 프레임어크 사용법: ex03.c ~ 
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - Mybatis 퍼시스턴스 프레임워크 적용(계속): DAO 구현체를 자동으로 생성하는 방법
+
+## 80일차(2021-10-25,월)
+
+- 서블릿 프로그래밍(eomcs-java) : eomcs-servlet
+  - 서블릿 프로그래밍 개요 및 실습
+- 실전 프로젝트(eomcs-java-project)
+  - 23-a. 웹 애플리케이션 서버 아키텍처로 전환하기 : Servlet 기술 도입
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - Mybatis 퍼시스턴스 프레임워크 적용(계속): DAO 구현체를 자동으로 생성하는 방법
+
+## 81일차(2021-10-26,화)
+
+- 서블릿 프로그래밍(eomcs-java) : eomcs-servlet
+  - 서블릿 프로그래밍 개요 및 실습
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - 서블릿 기술 적용
+- 실전 프로젝트(eomcs-java-project)
+  - 23-a. 웹 애플리케이션 서버 아키텍처로 전환하기 : Servlet/JSP 기술 도입
+
+## 82일차(2021-10-27,수)
+
+- 서블릿 프로그래밍(eomcs-java) : eomcs-servlet
+  - HTML 사용법
+- 실전 프로젝트(eomcs-java-project)
+  - 23-a. 웹 애플리케이션 서버 아키텍처로 전환하기 : Servlet/JSP 기술 도입(계속)
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - 서블릿 기술 적용(계속)
+
+## 83일차(2021-10-28,목)
+
+- 서블릿 프로그래밍(eomcs-java) : eomcs-servlet
+  - JSP 프로그래밍
+- 실전 프로젝트(eomcs-java-project)
+  - 23-a. 웹 애플리케이션 서버 아키텍처로 전환하기 : Servlet/JSP 기술 도입(계속)
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - 서블릿 기술 적용(계속)
+
+## 84일차(2021-10-29,금)
+
+- 서블릿 프로그래밍(eomcs-java) : eomcs-servlet
+  - JSP 프로그래밍
+- 실전 프로젝트(eomcs-java-project)
+  - 23-b. 웹 애플리케이션 서버 아키텍처로 전환하기 : MVC 패턴 적용
+  - 23-c. 웹 애플리케이션 서버 아키텍처로 전환하기 : EL, JSTL 적용
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - MVC + EL + JSTL 기술 적용
+
+## 85일차(2021-11-01,월)
+
+- CSS(eomcs-java) : eomcs-servlet
+  - CSS 사용법
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - MVC + EL + JSTL 기술 적용		
+
+## 86일차(2021-11-02,화)
+
+- 자소서 작성법
+
+## 87일차(2021-11-03,수)
+
+- CSS(eomcs-java) : eomcs-servlet
+  - CSS 사용법(계속)
+  - Bootstrap CSS 라이브러리 적용
+- 실전 프로젝트(eomcs-java-project)
+  - 23-d. 웹 애플리케이션 서버 아키텍처로 전환하기 : Bootstrap 적용
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - Bootstrap 기술 적용	
+
+## 88일차(2021-11-04,목)
+
+- javascript(eomcs-java) : eomcs-servlet
+  - JavaScript 프로그래밍
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - Bootstrap 기술 적용
+
+## 89일차(2021-11-05,금)
+
+- javascript(eomcs-java) : eomcs-servlet
+  - JavaScript 프로그래밍(계속)
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - 자바스크립트 기술 적용
