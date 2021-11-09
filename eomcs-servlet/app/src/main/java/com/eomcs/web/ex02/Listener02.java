@@ -31,6 +31,10 @@ import javax.servlet.http.HttpServletRequest;
 //@WebListener
 public class Listener02 implements ServletRequestListener {
 
+  public Listener02() {
+    System.out.println("Listener02() 호출됨!");
+  }
+
   @Override
   public void requestInitialized(ServletRequestEvent sre) {
     // 요청이 들어 왔을 때 호출된다.

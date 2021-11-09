@@ -1,22 +1,28 @@
 @charset "UTF-8";
 
+.container {
+  xborder: 1px solid red;
+  width: 640px;
+}
+
 header {
-	border: 1px solid red;
-	height: 50px;
+	xborder: 1px solid red;
+	xheight: 50px;
 }
 
 footer {
-	border: 1px solid blue;
+	xborder: 1px solid blue;
+	clear: left;
 }
 
 aside {
-	border: 1px solid green;
+	xborder: 1px solid green;
 	float: left;
 	width: 90px;
 	min-height: 300px;
 }
 
 #content {
-	border: 1px dashed yellow;
+	xborder: 1px dashed yellow;
 	margin-left: 100px;
 }

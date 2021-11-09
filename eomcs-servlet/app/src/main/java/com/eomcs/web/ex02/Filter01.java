@@ -42,6 +42,7 @@ import javax.servlet.ServletResponse;
 // - 클라이언트로 보낼 데이터를 압축하기
 // - 클라이언트로 보낼 데이터를 암호화시키기
 //
+//@WebFilter("/ex02/*")
 public class Filter01 implements Filter {
 
   @Override
