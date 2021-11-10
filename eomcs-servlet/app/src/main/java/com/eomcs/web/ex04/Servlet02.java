@@ -167,6 +167,10 @@ public class Servlet02 extends GenericServlet {
 //         => AB가각
 //
 // GET 요청 vs POST 요청
+// 0) 데이터 전송 방식
+// => GET
+//
+//
 // 1) 전송 데이터 용량
 // => GET
 //    - 대부분의 웹서버가 request-line과 헤더의 크기를 8KB로 제한하고 있다.

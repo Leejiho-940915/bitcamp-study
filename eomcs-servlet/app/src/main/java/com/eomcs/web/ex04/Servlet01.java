@@ -26,7 +26,7 @@ public class Servlet01 extends GenericServlet {
     // 테스트
     // - http://localhost:8080/web/ex04/test01.html 실행
     //
- 
+
     // 웹 브라우저가 보낸 데이터 읽기
     // ServletRequest.getParameter("파라미터이름")
     //
@@ -64,7 +64,7 @@ public class Servlet01 extends GenericServlet {
 // HTTP 요청 형식
 // 
 // method sp request-URI sp http_version CRLF
-// *(general header | request header | entity header) CRLF
+// *((general header | request header | entity header) CRLF)
 // CRLF
 // message-body
 //

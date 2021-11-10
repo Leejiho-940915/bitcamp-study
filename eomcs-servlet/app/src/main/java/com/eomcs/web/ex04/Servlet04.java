@@ -77,7 +77,10 @@ public class Servlet04 extends GenericServlet {
     // 2) Apache commons-fileupload 문서에 따라 코딩한다.
     //
     // DiskFileItemFactory
-    // => 각 파트 데이터를 분석하여 FileItem 객체에 담아주는 일을 한다. 
+    // => 각 파트 데이터를 분석하여
+    //    - 파라미터이름과 값을 추출한다.
+    //    - 파일인 경우 임시 폴더에 저장한다.
+    //    - 그런 후 FileItem 객체에 분석한 정보를 담아서 리턴한다. 
     // => ServletFileUpload 객체의 일을 도와준다.
     DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 
@@ -116,7 +119,7 @@ public class Servlet04 extends GenericServlet {
           File file = new File(this.uploadDir + "/" + filename);
           System.out.println(file.getCanonicalPath());
 
-          // 파일 경로에 업로드 파일을 저장한다.
+          // 임시 폴더에 저장된 파일을 지정된 경로로 옮긴다.
           part.write(file);
 
           paramMap.put(part.getFieldName(), // 클라이언트가 보낸 파라미터 이름

@@ -61,6 +61,9 @@ dependencies {
     
     // JSTL 구현체
     implementation 'javax.servlet:jstl:1.2'
+    
+    // Thumbnailator 썸네일 생성 라이브러리
+    implementation 'net.coobird:thumbnailator:0.4.14'
 }
 
 

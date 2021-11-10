@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true" %>
-  
 <h1>회원 상세(MVC + EL + Bootstrap + 템플릿)</h1>
-<form id="member-form" action='update' method="post">
+<form id="member-form" action='update' method="post" enctype="multipart/form-data">
 <div class="mb-3 row">
   <label for='f-no' class="col-sm-2 col-form-label">번호</label>
   <div class="col-sm-6">
@@ -31,7 +30,10 @@
 <div class="mb-3 row">
   <label for='f-photo' class="col-sm-2 col-form-label">사진</label> 
   <div class="col-sm-10">
-    <input id='f-photo' type='text' name='photo' class="form-control" value="${member.photo}">
+    <a href="../upload/member/${member.photo}">
+        <img id="f-photo-image" src="../upload/member/${member.photo}_100x100.jpg">
+    </a>
+    <input id='f-photo' type='file' name='photo' class="form-control">
   </div>
 </div>
 <div class="mb-3 row">
