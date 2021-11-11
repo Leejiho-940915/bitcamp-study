@@ -28,15 +28,15 @@
   </context-param>
 -->
 
-	<context-param>
-	  <param-name>encoding</param-name>
-	  <param-value>UTF-8</param-value>
-	</context-param>
-	
-	<context-param>
-	  <param-name>aaa</param-name>
-	  <param-value>hohoho</param-value>
-	</context-param> 
+  <context-param>
+    <param-name>encoding</param-name>
+    <param-value>UTF-8</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>aaa</param-name>
+    <param-value>hohoho</param-value>
+  </context-param> 
  
 <!-- 리스너 등록 -->
 <!--  

@@ -4,7 +4,6 @@ package com.eomcs.web.ex06;
 import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 // 모든 서블릿에서 사용할 값을 설정하려면 컨텍스트 파라미터로 설정해야 한다.
 // => web.xml 에 지정하였다.
 //
-@WebServlet("/ex06/s5")
+//@WebServlet(value="/ex06/s5", loadOnStartup=1)
 @SuppressWarnings("serial")
 public class Servlet05 extends HttpServlet {
 
@@ -25,10 +24,8 @@ public class Servlet05 extends HttpServlet {
     // => 웹 애플리케이션 당 ServletContext 객체는 한 개이다.
     // => 따라서 다음 코드 모두 같은 객체를 리턴한다.
     ServletContext sc = this.getServletContext();
-    ServletContext sc2 = req.getServletContext();
-    ServletContext sc3 = this.getServletConfig().getServletContext();
+    ServletContext sc2 = this.getServletConfig().getServletContext();
     System.out.println(sc == sc2);
-    System.out.println(sc == sc3);
 
     System.out.printf("driver=%s\n", sc.getInitParameter("jdbc2.driver"));
     System.out.printf("url=%s\n", sc.getInitParameter("jdbc2.url"));
