@@ -15,81 +15,80 @@
     <result column="created_dt" property="registeredDate"/>
   </resultMap>
   
-  
-  <select id="findAll" resultMap="MemberMap" >
+  <select id="findAll" resultMap="MemberMap">
     select 
       member_no,
       name,
       email,
       tel,
-      created_dt
+      created_dt 
     from 
-      pms_member
-    order by
-     name asc
+      pms_member 
+    order by 
+      name asc
   </select>
   
   <select id="findByNo" resultMap="MemberMap" parameterType="int">
-  select 
-    member_no,
-    name,
-    email,
-    photo,
-    tel,
-    created_dt
-  from 
-    pms_member
-  where
-   member_no=#{no}
+    select 
+      member_no,
+      name,
+      email,
+      photo,
+      tel,
+      created_dt 
+    from 
+      pms_member 
+    where 
+      member_no=#{no}
   </select>
-  
+
   <insert id="insert" parameterType="member">
-  insert into pms_member(name,email,password,photo,tel) 
-  values(#{name},#{email},password(#{password}),#{photo},#{tel})
+    insert into pms_member(name,email,password,photo,tel) 
+    values(#{name},#{email},password(#{password}),#{photo},#{tel})
   </insert>
   
   <update id="update" parameterType="member">
-	  update pms_member set
-	    name=#{name},
-	    email=#{email},
-	    password=password(#{password}),
-	    photo=#{photo},
-	    tel=#{tel}
-	  where 
-	    member_no=#{no}
+    update pms_member set
+      name=#{name},
+      email=#{email},
+      password=password(#{password}),
+      photo=#{photo},
+      tel=#{tel}
+    where 
+      member_no=#{no}
   </update>
   
   <delete id="delete" parameterType="int">
-  delete from pms_member 
-  where member_no=#{value}
+    delete from pms_member 
+    where member_no=#{value}
   </delete>
   
   <select id="findByEmailAndPassword" resultMap="MemberMap">
-  select 
-    member_no,
-    name,
-    email,
-    photo,
-    tel,
-    created_dt
-  from 
-    pms_member
-  where 
-    email=#{email} and password=password(#{password})
+    select 
+      member_no,
+      name,
+      email,
+      photo,
+      tel,
+      created_dt 
+    from 
+      pms_member
+    where 
+      email=#{email} and password=password(#{password})
   </select>
   
   <select id="findByName" resultMap="MemberMap" parameterType="string">
-  select 
-    member_no,
-    name,
-    email,
-    photo,
-    tel,
-    created_dt
-  from 
-    pms_member
-  where 
-    name=#{value}
+    select 
+      member_no,
+      name,
+      email,
+      photo,
+      tel,
+      created_dt 
+    from 
+      pms_member
+    where 
+      name=#{value}
   </select>
 </mapper>
 
