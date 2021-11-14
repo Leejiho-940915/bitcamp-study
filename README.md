@@ -1005,3 +1005,55 @@
 - 팀 프로젝트 
   - 팀별 프로젝트 구현
     - 자바스크립트 기술 적용
+
+## 90일차(2021-11-08,월)
+
+- javascript(eomcs-java) : eomcs-servlet
+  - JavaScript 프로그래밍(계속)
+- 실전 프로젝트(eomcs-java-project)
+  - 23-e. 웹 애플리케이션 서버 아키텍처로 전환하기 : JavaScript 적용 + POST + 필터 적용
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - 자바스크립트 기술 적용
+
+## 91일차(2021-11-09,화)
+
+- javascript(eomcs-java) : eomcs-servlet
+  - 서블릿 프로그래밍
+- 실전 프로젝트(eomcs-java-project)
+  - 23-e. 웹 애플리케이션 서버 아키텍처로 전환하기 : JavaScript 적용 + POST + 필터 적용(계속)	
+  - 23-f. 웹 애플리케이션 서버 아키텍처로 전환하기 : 템플릿 적용
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - 자바스크립트 기술 적용
+
+## 92일차(2021-11-10,수)
+
+- javascript(eomcs-java) : eomcs-servlet
+  - 서블릿 프로그래밍
+- 실전 프로젝트(eomcs-java-project)
+  - 23-g. 웹 애플리케이션 서버 아키텍처로 전환하기 : get/post, 파일 업로드, 썸네일, 로그인/로그아웃 적용
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - 자바스크립트 기술 적용
+
+## 93일차(2021-11-11,목)
+
+- javascript(eomcs-java) : eomcs-servlet
+  - 서블릿 프로그래밍
+- 실전 프로젝트(eomcs-java-project)
+  - 23-g. 웹 애플리케이션 서버 아키텍처로 전환하기 : get/post, 파일 업로드, 썸네일, 로그인/로그아웃, 쿠키 적용(계속)
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - 자바스크립트 기술 적용
+
+## 93일차(2021-11-11,목)
+
+- javascript(eomcs-java) : eomcs-servlet
+  - 서블릿 프로그래밍
+- 실전 프로젝트(eomcs-java-project)
+  - 23-h. 웹 애플리케이션 서버 아키텍처로 전환하기 : 프론트 컨트롤러 도입
+  - 24-a. Spring WebMVC 프레임워크 도입하기 : 프레임워크 적용
+- 팀 프로젝트 
+  - 팀별 프로젝트 구현
+    - 자바스크립트 기술 적용
