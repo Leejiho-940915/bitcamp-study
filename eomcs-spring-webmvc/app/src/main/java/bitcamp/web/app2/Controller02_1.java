@@ -53,7 +53,7 @@ public class Controller02_1 {
 
   // 테스트:
   //   http://localhost:9999/eomcs-spring-webmvc/app2/c02_1/kim_20
-  @GetMapping("{name}_{age}")
+  @GetMapping("h3/{name}_{age}")
   @ResponseBody
   public String handler3(
       @PathVariable String name,

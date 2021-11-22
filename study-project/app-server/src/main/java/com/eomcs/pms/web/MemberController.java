@@ -4,15 +4,15 @@ import java.util.Collection;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.eomcs.pms.dao.MemberDao;
 import com.eomcs.pms.domain.Member;
+import com.eomcs.pms.service.MemberService;
 import net.coobird.thumbnailator.ThumbnailParameter;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
@@ -22,8 +22,7 @@ import net.coobird.thumbnailator.name.Rename;
 @RequestMapping("/member")
 public class MemberController {
 
-  @Autowired SqlSessionFactory sqlSessionFactory;
-  @Autowired MemberDao memberDao;
+  @Autowired MemberService memberService;
   @Autowired ServletContext sc;
 
   @GetMapping("form")
@@ -65,8 +64,7 @@ public class MemberController {
       });
     }
 
-    memberDao.insert(member);
-    sqlSessionFactory.openSession().commit();
+    memberService.add(member);
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("refresh", "2;url=list");
@@ -79,7 +77,7 @@ public class MemberController {
   @GetMapping("list")
   public ModelAndView list() throws Exception {
 
-    Collection<Member> memberList = memberDao.findAll();
+    Collection<Member> memberList = memberService.list();
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("memberList", memberList);
@@ -91,7 +89,7 @@ public class MemberController {
 
   @GetMapping("detail")
   public ModelAndView detail(int no) throws Exception {
-    Member member = memberDao.findByNo(no);
+    Member member = memberService.get(no);
     if (member == null) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
@@ -107,7 +105,7 @@ public class MemberController {
   @PostMapping("update")
   public ModelAndView update(Member member, Part photoFile) throws Exception {
 
-    Member oldMember = memberDao.findByNo(member.getNo());
+    Member oldMember = memberService.get(member.getNo());
     if (oldMember == null) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     } 
@@ -145,8 +143,7 @@ public class MemberController {
       member.setPhoto(filename);
     }
 
-    memberDao.update(member);
-    sqlSessionFactory.openSession().commit();
+    memberService.update(member);
 
     ModelAndView mv = new ModelAndView();
     mv.setViewName("redirect:list");
@@ -155,17 +152,22 @@ public class MemberController {
 
   @GetMapping("delete")
   public ModelAndView delete(int no) throws Exception {
-    Member member = memberDao.findByNo(no);
+    Member member = memberService.get(no);
     if (member == null) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
 
-    memberDao.delete(no);
-    sqlSessionFactory.openSession().commit();
+    memberService.remove(no);
 
     ModelAndView mv = new ModelAndView();
     mv.setViewName("redirect:list");
     return mv;
+  }
+
+  @GetMapping("checkEmail")
+  @ResponseBody
+  public boolean checkEmail(String email) throws Exception {
+    return memberService.isDuplicated(email);
   }
 }
 

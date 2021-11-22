@@ -96,31 +96,31 @@ var modalName = document.querySelector("#f-name");
 var modalEmail = document.querySelector("#f-email");
 
 document.querySelectorAll(".x-delete-btn").forEach((tag) => {
-  tag.onclick = (e) => {
-    e.stopPropagation();
-    var no = e.target.getAttribute("data-no");
-    var tr = document.querySelector("tbody tr[data-no='" + no + "']");
-    var name = tr.querySelector("td:nth-child(2) a").textContent;
-    var email = tr.querySelector("td:nth-child(3)").textContent;
-    
-    modalNo.value = no;
-    modalName.value = name;
-    modalEmail.value = email;
-  }
+	tag.onclick = (e) => {
+		e.stopPropagation();
+		var no = e.target.getAttribute("data-no");
+		var tr = document.querySelector("tbody tr[data-no='" + no + "']");
+		var name = tr.querySelector("td:nth-child(2) a").textContent;
+		var email = tr.querySelector("td:nth-child(3)").textContent;
+		
+		modalNo.value = no;
+		modalName.value = name;
+		modalEmail.value = email;
+	}
 });
 
 document.querySelectorAll("tbody a").forEach((aTag) => {
-  aTag.onclick = () => false;
+	aTag.onclick = () => false;
 });
 
 var trList = document.querySelectorAll("tbody tr"); // 리턴 객체는 HTMLCollection 타입 객체이다.
 trList.forEach(function(trTag) {
-  trTag.onclick = (e) => {
-    //console.log(e.currentTarget.querySelector("a").href);
-    //e.currentTarget.querySelector("a").click();
-    window.location.href = e.currentTarget.querySelector("a").href;
-    //window.location.href = "detail?no=" + e.currentTarget.getAttribute("data-no");
-  };
+	trTag.onclick = (e) => {
+		//console.log(e.currentTarget.querySelector("a").href);
+		//e.currentTarget.querySelector("a").click();
+		window.location.href = e.currentTarget.querySelector("a").href;
+		//window.location.href = "detail?no=" + e.currentTarget.getAttribute("data-no");
+	};
 });
 </script>
 
